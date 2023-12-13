@@ -8,25 +8,20 @@
     "net7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Doguser\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\Sour Lemon\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Doguser\\Desktop\\SchoolManagementSystem\\iDEA\\iDEA.csproj",
+      "projectUniqueName": "C:\\Users\\Sour Lemon\\Desktop\\PROJECTS\\iDEA-OnlineEducation\\iDEA.csproj",
       "projectName": "iDEA",
-      "projectPath": "C:\\Users\\Doguser\\Desktop\\SchoolManagementSystem\\iDEA\\iDEA.csproj",
-      "packagesPath": "C:\\Users\\Doguser\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Doguser\\Desktop\\SchoolManagementSystem\\iDEA\\obj\\",
+      "projectPath": "C:\\Users\\Sour Lemon\\Desktop\\PROJECTS\\iDEA-OnlineEducation\\iDEA.csproj",
+      "packagesPath": "C:\\Users\\Sour Lemon\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Sour Lemon\\Desktop\\PROJECTS\\iDEA-OnlineEducation\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Doguser\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\Sour Lemon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -61,6 +56,24 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[7.0.14, 7.0.14]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[7.0.14, 7.0.14]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[7.0.14, 7.0.14]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[7.0.14, 7.0.14]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
