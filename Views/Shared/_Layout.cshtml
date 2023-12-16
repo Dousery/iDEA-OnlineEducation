@@ -1,49 +1,48 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - iDEA</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/iDEA.styles.css" asp-append-version="true" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">iDEA</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    <div class="navbar navbar-expand-sm bg-light fixed-top border-bottom">
+        <div class="container-fluid">
+            <a href="#" class="navbar-brand">iDEA</a>
+        </div>
+
+        <form class="d-flex mx-2" method="post" action="/Account/Login">
+            <input type="text" name="Username" class="form-control me-2" placeholder="Username">
+            <input type="password" name="Password" class="form-control me-2" placeholder="Password">
+            <button type="submit" class="btn btn-primary me-2">Login</button>
+        </form>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - iDEA - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <!-- Prevent content from being hidden under fixed navbar with this placeholder navbar-->
+    <div class="navbar navbar-expand-sm bg-light border-bottom">
+        <div class="container-fluid">
+            <p>a</p>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+        <div class="d-flex container-fluid">
+            <p>a</p>
+        </div>
+    </div>
+
+    @RenderBody()
+
+    <div class="navbar navbar-expand-sm bg-light fixed-bottom border-top">
+        <div class="container d-flex align-items-center">
+            <ul class="nav justify-content-center">
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+            </ul>
+            <p class="text-center text-body-secondary mt-3">© 2023 placeholder company name, Inc</p>
+        </div>
+    </div>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
 </body>
+
 </html>

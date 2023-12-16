@@ -28,3 +28,34 @@ C:\Users\Doguser\Desktop\SchoolManagementSystem\iDEA\obj\Debug\net7.0\refint\iDE
 C:\Users\Doguser\Desktop\SchoolManagementSystem\iDEA\obj\Debug\net7.0\iDEA.pdb
 C:\Users\Doguser\Desktop\SchoolManagementSystem\iDEA\obj\Debug\net7.0\iDEA.genruntimeconfig.cache
 C:\Users\Doguser\Desktop\SchoolManagementSystem\iDEA\obj\Debug\net7.0\ref\iDEA.dll
+C:\Users\Sour Lemon\Desktop\PROJECTS\iDEA-OnlineEducation\bin\Debug\net7.0\appsettings.Development.json
+C:\Users\Sour Lemon\Desktop\PROJECTS\iDEA-OnlineEducation\bin\Debug\net7.0\appsettings.json
+C:\Users\Sour Lemon\Desktop\PROJECTS\iDEA-OnlineEducation\bin\Debug\net7.0\iDEA.staticwebassets.runtime.json
+C:\Users\Sour Lemon\Desktop\PROJECTS\iDEA-OnlineEducation\bin\Debug\net7.0\iDEA.exe
+C:\Users\Sour Lemon\Desktop\PROJECTS\iDEA-OnlineEducation\bin\Debug\net7.0\iDEA.deps.json
+C:\Users\Sour Lemon\Desktop\PROJECTS\iDEA-OnlineEducation\bin\Debug\net7.0\iDEA.runtimeconfig.json
+C:\Users\Sour Lemon\Desktop\PROJECTS\iDEA-OnlineEducation\bin\Debug\net7.0\iDEA.dll
+C:\Users\Sour Lemon\Desktop\PROJECTS\iDEA-OnlineEducation\bin\Debug\net7.0\iDEA.pdb
+C:\Users\Sour Lemon\Desktop\PROJECTS\iDEA-OnlineEducation\obj\Debug\net7.0\iDEA.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Sour Lemon\Desktop\PROJECTS\iDEA-OnlineEducation\obj\Debug\net7.0\iDEA.AssemblyInfoInputs.cache
+C:\Users\Sour Lemon\Desktop\PROJECTS\iDEA-OnlineEducation\obj\Debug\net7.0\iDEA.AssemblyInfo.cs
+C:\Users\Sour Lemon\Desktop\PROJECTS\iDEA-OnlineEducation\obj\Debug\net7.0\iDEA.csproj.CoreCompileInputs.cache
+C:\Users\Sour Lemon\Desktop\PROJECTS\iDEA-OnlineEducation\obj\Debug\net7.0\iDEA.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Sour Lemon\Desktop\PROJECTS\iDEA-OnlineEducation\obj\Debug\net7.0\iDEA.RazorAssemblyInfo.cache
+C:\Users\Sour Lemon\Desktop\PROJECTS\iDEA-OnlineEducation\obj\Debug\net7.0\iDEA.RazorAssemblyInfo.cs
+C:\Users\Sour Lemon\Desktop\PROJECTS\iDEA-OnlineEducation\obj\Debug\net7.0\iDEA.sourcelink.json
+C:\Users\Sour Lemon\Desktop\PROJECTS\iDEA-OnlineEducation\obj\Debug\net7.0\staticwebassets.build.json
+C:\Users\Sour Lemon\Desktop\PROJECTS\iDEA-OnlineEducation\obj\Debug\net7.0\staticwebassets.development.json
+C:\Users\Sour Lemon\Desktop\PROJECTS\iDEA-OnlineEducation\obj\Debug\net7.0\staticwebassets\msbuild.iDEA.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Sour Lemon\Desktop\PROJECTS\iDEA-OnlineEducation\obj\Debug\net7.0\staticwebassets\msbuild.build.iDEA.props
+C:\Users\Sour Lemon\Desktop\PROJECTS\iDEA-OnlineEducation\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.iDEA.props
+C:\Users\Sour Lemon\Desktop\PROJECTS\iDEA-OnlineEducation\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.iDEA.props
+C:\Users\Sour Lemon\Desktop\PROJECTS\iDEA-OnlineEducation\obj\Debug\net7.0\staticwebassets.pack.json
+C:\Users\Sour Lemon\Desktop\PROJECTS\iDEA-OnlineEducation\obj\Debug\net7.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\Sour Lemon\Desktop\PROJECTS\iDEA-OnlineEducation\obj\Debug\net7.0\scopedcss\bundle\iDEA.styles.css
+C:\Users\Sour Lemon\Desktop\PROJECTS\iDEA-OnlineEducation\obj\Debug\net7.0\scopedcss\projectbundle\iDEA.bundle.scp.css
+C:\Users\Sour Lemon\Desktop\PROJECTS\iDEA-OnlineEducation\obj\Debug\net7.0\iDEA.dll
+C:\Users\Sour Lemon\Desktop\PROJECTS\iDEA-OnlineEducation\obj\Debug\net7.0\refint\iDEA.dll
+C:\Users\Sour Lemon\Desktop\PROJECTS\iDEA-OnlineEducation\obj\Debug\net7.0\iDEA.pdb
+C:\Users\Sour Lemon\Desktop\PROJECTS\iDEA-OnlineEducation\obj\Debug\net7.0\iDEA.genruntimeconfig.cache
+C:\Users\Sour Lemon\Desktop\PROJECTS\iDEA-OnlineEducation\obj\Debug\net7.0\ref\iDEA.dll

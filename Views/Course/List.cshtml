@@ -1,21 +1,8 @@
 @model List<Course>
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-    </head>
-    <body>
-    
-        <h35>Course List</h35>
-    
-        @foreach(var kurs in Model){
-            
-            <p>@kurs.ID</p>
-            <p>@kurs.Name</p>
-            <img src="~/img/@kurs.Image" width="100" alt="">
-        }
-        
-    </body>
-    </html>
+@foreach (var kurs in Model)
+{
+
+    <p>@kurs.ID</p>
+    <p>@kurs.Name</p>
+    <img src="~/img/@kurs.Image" width="100" alt="@kurs.Name">
+}

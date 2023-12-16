@@ -8,9 +8,5 @@ namespace iDEA.Controllers
         {
             return View();
         }
-
-        public IActionResult Privacy(){
-            return View();
-        }
     }
 }
