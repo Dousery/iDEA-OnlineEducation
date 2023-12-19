@@ -6,4 +6,16 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="Views\Account\Register.cshtml" />
+    <Content Remove="Views\Course\Assignment.cshtml" />
+    <Content Remove="Views\Course\Info.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Account\Register.cshtml" />
+    <None Include="Views\Course\Assignment.cshtml" />
+    <None Include="Views\Course\Info.cshtml" />
+  </ItemGroup>
+
 </Project>

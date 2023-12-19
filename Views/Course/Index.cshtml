@@ -1,4 +1,8 @@
-@model Course
-<h>Course Information : </h>
-<p>@Model.ID</p>
-<p>@Model.Name</p>
+@model List<Course>
+@foreach (var kurs in Model)
+{
+
+    <p>@kurs.ID</p>
+    <p>@kurs.Name</p>
+    <img src="~/img/@kurs.Image" width="100" alt="@kurs.Name">
+}
