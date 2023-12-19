@@ -34,6 +34,33 @@ body {
     color:rgb(43, 205, 208); /* Yazı rengini belirtin */
   }
 
+  .profile-pic{
+    display: inline-block;
+    vertical-align: middle;
+     width: 40px;
+     height: 40px;
+     overflow: hidden;
+    border-radius: 50%;
+ }
+ 
+ .profile-pic img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+ }
+ .profile-menu .dropdown-menu {
+   right: 0;
+   left: unset;
+ }
+ .profile-menu .fa-fw {
+   margin-right: 10px;
+ }
+ 
+ .toggle-change::after {
+   border-top: 0;
+   border-bottom: 0.3em solid;
+ }
+
 
 
 
