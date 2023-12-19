@@ -5,31 +5,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="~/css/style.css">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.19.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/site.css" />
+
 </head>
 
 <body>
-    <div class="navbar navbar-expand-sm bg-light fixed-top border-bottom">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container-fluid">
-            <a href="#" class="navbar-brand">iDEA</a>
+            <a class="navbar-brand ps-4" href="">
+                <img src="/img/ideaLogo2.png" alt="Logo" width="40" height="40">
+            </a>
+            <a class="navbar-brand" style="color:rgb(43,205,208)" href="#">iDEA</a>
+            <button class="navbar-toggler style=" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown ps-4">
+                        <a class="nav-link active dropdown-toggle" style="color:lightgoldenrodyellow;" href="#"
+                            id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Derslerim
+                        </a>
+                        <ul class="dropdown-menu bg-dark w-25" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item bg-dark "
+                                    style="color:lightgoldenrodyellow; border-top: 2px solid rgb(43, 205, 208); border-bottom: 0.5px solid rgb(43, 205, 208);"
+                                    href="#">> Fizik</a></li>
+                            <li><a class="dropdown-item bg-dark "
+                                    style="color:lightgoldenrodyellow; border-top: 0.5px solid rgb(43, 205, 208);"
+                                    href="#">> Kimya</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ps-4">
+                        <a class="nav-link navbar active" style="color: lightgoldenrodyellow;" aria-current="page"
+                            href="#">Notlarım</a>
+                    </li>
+                    <li class="nav-item ps-4">
+                        <a class="nav-link active " style="color: lightgoldenrodyellow;" aria-current="page"
+                            href="#">Ödevlerim</a>
+                    </li>
+                    <li class="nav-item ps-4">
+                        <a class="nav-link active" style="color: rgb(250, 239, 210);" aria-current="page"
+                            href="#">Duyurular</a>
+                    </li>
+                </ul>
+            </div>
+            <a href="" class="nav-item text-light text-decoration-none d-none d-lg-block pe-3">Koca Kafa Arda</a>
+            <ul class="navbar-nav d-none d-lg-block ms-auto mb-2 mb-lg-0 profile-menu">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="profile-pic">
+                            <img src="https://source.unsplash.com/250x250?girl" alt="Profile Picture">
+                        </div>
+                        <!-- You can also use icon as follows: -->
+                        <!--  <i class="fas fa-user"></i> -->
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-sliders-h fa-fw"></i> Account</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-cog fa-fw"></i> Settings</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-fw"></i> Log Out</a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
-
-        <form class="d-flex mx-2" method="post" action="/Account/Login">
-            <input type="text" name="Username" class="form-control me-2" placeholder="Username" required>
-            <input type="password" name="Password" class="form-control me-2" placeholder="Password" required>
-            <button type="submit" class="btn btn-primary me-2">Login</button>
-        </form>
-    </div>
-
-    <!-- Prevent content from being hidden under fixed navbar with this placeholder navbar-->
-    <div class="navbar navbar-expand-sm bg-light border-bottom">
-        <div class="container-fluid">
-            <p>a</p>
-        </div>
-        <div class="d-flex container-fluid">
-            <p>a</p>
-        </div>
-    </div>
+    </nav>
 
     @RenderBody()
 
