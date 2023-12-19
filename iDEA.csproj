@@ -13,8 +13,5 @@
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.10" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
-    <Content Remove="Views\Account\Register.cshtml" />
-    <Content Remove="Views\Course\Assignment.cshtml" />
-    <Content Remove="Views\Course\Info.cshtml" />
   </ItemGroup>
 </Project>
