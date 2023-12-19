@@ -13,7 +13,7 @@ namespace iDEA.Entity {
 
         public string? Username { get; set; }
         [PasswordPropertyText]
-        public byte? Password { get; set; }
+        public string? Password { get; set; }
     }
 
 }

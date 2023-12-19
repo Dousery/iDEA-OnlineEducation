@@ -11,7 +11,7 @@ using iDEA.Entity;
 namespace iDEA.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20231218100805_InitialCreate")]
+    [Migration("20231218214826_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -139,8 +139,8 @@ namespace iDEA.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
-                    b.Property<byte?>("Password")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Password")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Surname")
                         .HasColumnType("TEXT");

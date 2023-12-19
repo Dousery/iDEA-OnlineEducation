@@ -136,8 +136,8 @@ namespace iDEA.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
-                    b.Property<byte?>("Password")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Password")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Surname")
                         .HasColumnType("TEXT");

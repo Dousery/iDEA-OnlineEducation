@@ -104,7 +104,7 @@ namespace iDEA.Migrations
                     Name = table.Column<string>(type: "TEXT", nullable: true),
                     Surname = table.Column<string>(type: "TEXT", nullable: true),
                     Username = table.Column<string>(type: "TEXT", nullable: true),
-                    Password = table.Column<byte>(type: "INTEGER", nullable: true)
+                    Password = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
