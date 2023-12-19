@@ -20,3 +20,20 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.round-profile-img {
+  border-radius: 50%;
+}
+
+
+  /* Navbar yazı stili değiştirme */
+  .navbar-brand {
+    font-family: 'Arial', sans-serif; /* Yeni yazı türünü belirtin */
+    font-size: 24px; /* Yazı boyutunu ayarlayın */
+    font-weight: bold; /* Yazı kalınlığını belirtin */
+    color:rgb(43, 205, 208); /* Yazı rengini belirtin */
+  }
+
+
+
+

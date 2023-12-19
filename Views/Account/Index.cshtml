@@ -1,121 +1,33 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tab Bar Örneği</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        #mainTabBar {
-            display: flex;
-            background-color: #333;
-            color: white;
-            overflow: hidden;
-            margin: 0 10px 10px 0;
-            cursor: pointer;
-            border: 1px solid #ccc;
-            padding: 10px;
-        }
-
-        .mainTab {
-            flex: 1;
-            padding: 15px;
-            text-align: center;
-            cursor: pointer;
-        }
-
-        .tabContent {
-            display: none;
-            padding: 20px;
-            border: 1px solid #ccc;
-        }
-
-        .subTabBox {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .subTab {
-            margin: 0 10px 10px 0;
-            cursor: pointer;
-            border: 1px solid #ccc;
-            padding: 10px;
-        }
-    </style>
-</head>
-<body>
-
-<div id="mainTabBar">
-    <div class="mainTab" onclick="showContent('mainTab1')">Ders1</div>
-    <div class="mainTab" onclick="showContent('mainTab2')">Ders2</div>
-    <div class="mainTab" onclick="showContent('mainTab3')">Ders3</div>
-    <div class="mainTab" onclick="showContent('mainTab4')">Ders4</div>
-    <div class="mainTab" onclick="showContent('mainTab5')">Ders5</div>
-</div>
-
-<div id="mainTab1Content" class="tabContent">
-    <div class="subTabBox">
-        <div class="subTab" onclick="redirectToPage('subTab1')">Alt Seçenek 1</div>
-        <div class="subTab" onclick="redirectToPage('subTab2')">Alt Seçenek 2</div>
-        <div class="subTab" onclick="redirectToPage('subTab3')">Alt Seçenek 3</div>
+<nav class="navbar navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand ps-4" href="">
+        <img src="/img/ideaLogo2.png" alt="Logo" width="40" height="40">
+      </a>
+      <a class="navbar-brand" href="#">iDEA</a>
+      <button class="navbar-toggler style=" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" ></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown ps-4">
+            <a class="nav-link active dropdown-toggle" style="color:lightgoldenrodyellow;" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Derslerim
+            </a>
+            <ul class="dropdown-menu bg-dark w-25" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item bg-dark " style="color:lightgoldenrodyellow; border-top: 2px solid rgb(43, 205, 208); border-bottom: 0.5px solid rgb(43, 205, 208);" href="#">> Fizik</a></li>
+              <li><a class="dropdown-item bg-dark " style="color:lightgoldenrodyellow; border-top: 0.5px solid rgb(43, 205, 208);" href="#">> Kimya</a></li>
+            </ul>
+          </li>
+          <li class="nav-item ps-4">
+            <a class="nav-link navbar active" style="color: lightgoldenrodyellow;" aria-current="page" href="#">Notlarım</a>
+          </li>
+          <li class="nav-item ps-4">
+            <a class="nav-link active " style="color: lightgoldenrodyellow;" aria-current="page" href="#">Ödevlerim</a>
+          </li>
+          <li class="nav-item ps-4">
+            <a class="nav-link active" style="color: rgb(250, 239, 210);" aria-current="page" href="#">Duyurular</a>
+          </li>
+        </ul>
+      </div>
     </div>
-</div>
-
-<div id="mainTab2Content" class="tabContent">
-    <div class="subTabBox">
-        <div class="subTab" onclick="redirectToPage('subTab4')">Alt Seçenek 4</div>
-        <div class="subTab" onclick="redirectToPage('subTab4')">Alt Seçenek 4</div>
-        <div class="subTab" onclick="redirectToPage('subTab5')">Alt Seçenek 5</div>
-    </div>
-</div>
-
-<div id="mainTab3Content" class="tabContent">
-    <div class="subTabBox">
-        <div class="subTab" onclick="redirectToPage('subTab6')">Alt Seçenek</div>
-        <div class="subTab" onclick="redirectToPage('subTab4')">Alt Seçenek</div>
-        <div class="subTab" onclick="redirectToPage('subTab4')">Alt Seçenek</div>
-    </div>
-</div>
-<div id="mainTab4Content" class="tabContent">
-    <div class="subTabBox">
-        <div class="subTab" onclick="redirectToPage('subTab6')">Alt Seçenek</div>
-        <div class="subTab" onclick="redirectToPage('subTab4')">Alt Seçenek</div>
-        <div class="subTab" onclick="redirectToPage('subTab4')">Alt Seçenek</div>
-    </div>
-</div>
-<div id="mainTab5Content" class="tabContent">
-    <div class="subTabBox">
-        <div class="subTab" onclick="redirectToPage('subTab6')">Alt Seçenek</div>
-        <div class="subTab" onclick="redirectToPage('subTab4')">Alt Seçenek</div>
-        <div class="subTab" onclick="redirectToPage('subTab4')">Alt Seçenek</div>
-    </div>
-</div>
-
-<script>
-    function showContent(mainTabId) {
-        // Tüm ana içerikleri gizle
-        var mainTabContents = document.getElementsByClassName('tabContent');
-        for (var i = 0; i < mainTabContents.length; i++) {
-            mainTabContents[i].style.display = 'none';
-        }
-
-        // Seçilen ana tabın içeriğini göster
-        document.getElementById(mainTabId + 'Content').style.display = 'block';
-    }
-
-    function redirectToPage(subTabId) {
-        // Alt seçeneklere tıklandığında, istenilen sayfaya yönlendir
-        var destinationPage = subTabId + '.html'; // İstenen sayfa adını ayarlayabilirsiniz
-        window.location.href = destinationPage;
-    }
-</script>
-
-</body>
-</html>
+  </nav>
