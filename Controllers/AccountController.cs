@@ -13,6 +13,10 @@ namespace iDEA.Controllers
 
         private readonly DataContext _context;
 
+        public AccountController(DataContext context) {
+            _context = context;
+        }
+
         [HttpGet]
         public IActionResult Login()
         {
