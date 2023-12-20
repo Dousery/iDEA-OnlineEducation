@@ -47,23 +47,20 @@
 </head>
 
 <body class='bodyClass'>
-  <nav class="navbar navbar-expand-lg bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand ps-4" href="">
-        <img src="/img/ideaLogo2.png" alt="Logo" width="40" height="40">
-      </a>
-      <a class="navbar-brand" href="#">iDEA</a>
-      <button class="navbar-toggler style=" type="button" data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-        aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <form class="d-flex mx-2" method="post" action="/Account/Login">
-        <input asp-for="Username" class="form-control me-2" placeholder="Username" required>
-        <input asp-for="Password" class="form-control me-2" placeholder="Password" required>
-        <button type="submit" class="btn btn-primary me-2">Login</button>
-      </form>
-    </div>
+  <nav class="navbar navbar-expand-sm bg-dark justify-content-center">
+    <ul class="navbar-nav container-fluid">
+      <li class="navbar-item ms-2 mb-2">
+        <a class="navbar-brand ps-2" href="">
+          <img src="/img/ideaLogo2.png" alt="Logo" width="40" height="40">
+        </a>
+        <a class="navbar-brand pe-2" href="#">iDEA</a>
+      </li>
+    </ul>
+    <form class="d-flex mx-2" method="post" action="/Account/Login">
+      <input asp-for="Username" class="form-control me-2" placeholder="Username" required>
+      <input asp-for="Password" class="form-control me-2" placeholder="Password" required>
+      <button type="submit" class="btn btn-primary me-2">Login</button>
+    </form>
   </nav>
 
   <!-- banner section start -->

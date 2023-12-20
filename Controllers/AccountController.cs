@@ -34,22 +34,28 @@ namespace iDEA.Controllers
 
             if (!ModelState.IsValid) {
                 ModelState.AddModelError("", "Invalid username or password.");
-                return View(model);
+                ViewBag.Invalid = true;
+                return View("~/Views/Home/Index.cshtml",model);
             }
             
             var isUser = _context.People.FirstOrDefault(x => x.Username == model.Username && x.Password == model.Password);
             if (isUser == null)
             {
                 ModelState.AddModelError("", "Invalid username or password.");
-                return View(model);
+                ViewBag.Invalid = true;
+                return View("~/Views/Home/Index.cshtml",model);
             }
 
             var userClaims = new List<Claim>
             {
                 new(ClaimTypes.NameIdentifier, isUser.ID.ToString()),
                 new(ClaimTypes.Name, isUser.Username ?? ""),
-                new(ClaimTypes.GivenName, isUser.Name ?? "")
+                new(ClaimTypes.GivenName, isUser.Name + " " + isUser.Surname ?? "")
             };
+
+            if (_context.Lecturers.FirstOrDefault(x => x.ID == isUser.ID) is null) {
+                userClaims.Add(new Claim(ClaimTypes.Role, "admin"));
+            }
 
             var claimsIdentity = new ClaimsIdentity(userClaims, CookieAuthenticationDefaults.AuthenticationScheme);
 
@@ -62,7 +68,7 @@ namespace iDEA.Controllers
 
             return RedirectToAction("Index", "Account");
         }
-
+        
         public async Task<IActionResult> Logout() {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Index","Home");
@@ -71,6 +77,7 @@ namespace iDEA.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            ViewBag.GivenName = User.FindFirstValue(ClaimTypes.GivenName);
             return View();
         }
     }

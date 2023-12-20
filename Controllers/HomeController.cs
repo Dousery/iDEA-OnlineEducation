@@ -6,6 +6,10 @@ namespace iDEA.Controllers
     {
         public IActionResult Index()
         {
+            if(User.Identity!.IsAuthenticated) {
+                return RedirectToAction("Index", "Account");
+            }
+
             return View();
         }
     }
