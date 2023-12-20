@@ -11,7 +11,7 @@ using iDEA.Entity;
 namespace iDEA.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20231218214826_InitialCreate")]
+    [Migration("20231219232651_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -128,6 +128,20 @@ namespace iDEA.Migrations
                     b.HasKey("PersonID", "CourseID");
 
                     b.ToTable("LectureCourses");
+                });
+
+            modelBuilder.Entity("iDEA.Entity.Lecturer", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Department")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Lecturers");
                 });
 
             modelBuilder.Entity("iDEA.Entity.Person", b =>

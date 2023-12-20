@@ -40,15 +40,12 @@ namespace iDEA.Controllers
                 return View(model);
             }
 
-            var userClaims = new List<Claim>();
-
-            userClaims.Add(new Claim(ClaimTypes.NameIdentifier, isUser.ID.ToString()));
-            userClaims.Add(new Claim(ClaimTypes.Name, isUser.Username ?? ""));
-            userClaims.Add(new Claim(ClaimTypes.GivenName, isUser.Name ?? ""));
-
-            if(isUser.ID == 0) {
-                userClaims.Add(new Claim(ClaimTypes.Role, "root"));
-            }
+            var userClaims = new List<Claim>
+            {
+                new(ClaimTypes.NameIdentifier, isUser.ID.ToString()),
+                new(ClaimTypes.Name, isUser.Username ?? ""),
+                new(ClaimTypes.GivenName, isUser.Name ?? "")
+            };
 
             var claimsIdentity = new ClaimsIdentity(userClaims, CookieAuthenticationDefaults.AuthenticationScheme);
 

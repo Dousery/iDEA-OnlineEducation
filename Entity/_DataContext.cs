@@ -13,6 +13,7 @@ namespace iDEA.Entity {
         public DbSet<Exam> Exams => Set<Exam>();
         public DbSet<Feedback> Feedbacks => Set<Feedback>();
         public DbSet<LectureCourse> LectureCourses => Set<LectureCourse>();
+        public DbSet<Lecturer> Lecturers => Set<Lecturer>();
         public DbSet<Person> People => Set<Person>();
         public DbSet<Record> Records => Set<Record>();
         public DbSet<Session> Sessions => Set<Session>();

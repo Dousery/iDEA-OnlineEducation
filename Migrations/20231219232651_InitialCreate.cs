@@ -96,6 +96,19 @@ namespace iDEA.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Lecturers",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Department = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Lecturers", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "People",
                 columns: table => new
                 {
@@ -215,6 +228,9 @@ namespace iDEA.Migrations
 
             migrationBuilder.DropTable(
                 name: "LectureCourses");
+
+            migrationBuilder.DropTable(
+                name: "Lecturers");
 
             migrationBuilder.DropTable(
                 name: "People");

@@ -127,6 +127,20 @@ namespace iDEA.Migrations
                     b.ToTable("LectureCourses");
                 });
 
+            modelBuilder.Entity("iDEA.Entity.Lecturer", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Department")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Lecturers");
+                });
+
             modelBuilder.Entity("iDEA.Entity.Person", b =>
                 {
                     b.Property<int>("ID")
