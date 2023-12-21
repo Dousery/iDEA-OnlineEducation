@@ -1,18 +1,31 @@
-<!-- Background video -->
-<div class="video-background-holder">
-     <div class="video-background-overlay"></div>
-     <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-           <source src="https://storage.coverr.co/videos/Nv4Gqow7scn9XalkdfhPSLNjwNWrYYpE?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6Ijg3NjdFMzIzRjlGQzEzN0E4QTAyIiwiaWF0IjoxNjMzMzkzNjUzfQ.EElJb38kbaq_0OTzJpPnInZjpR8pLDoxwLGskhuoBBc" type="video/mp4">
-       </video>
-     <div class="video-background-content container h-100">
-       <div class="d-flex h-100 text-center align-items-center">
-         <div class="w-100 text-white">
-           <h1 class="display-4">Bootstrap video background</h1>
-           <p class="lead mb-0">With HTML5 Video and Bootstrap 4</p>
-           <p class="lead">Snippet by <a href="https://bootstrapious.com/snippets" class="text-white">
-                       <u>Bootstrapious</u></a>
-           </p>
-         </div>
-       </div>
-     </div>
-   </div>
+@model UserDataModel
+@using System.Security.Claims
+<div class="container mx-5 mt-5">
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-4">
+      <div class="card bg-dark">
+        <div class="d-flex justify-content-center">
+          <img src="https://source.unsplash.com/250x250?person" class="rounded mt-4" height="175px" width="175px">
+        </div>
+        <div class="card-body">
+          <h3 class="card-title text-white">@(User.FindFirstValue(ClaimTypes.GivenName))</h3>
+          <p class="card-text text-white">@Model.Department</p>
+        </div>
+        <div class="d-flex border-bottom border-dark">
+          <div class="p-2 bg-secondary text-white border-end border-dark">ID</div>
+          <div class="p-2 bg-secondary text-white flex-fill">@Model.ID</div>
+        </div>
+        <div class="d-flex border-bottom border-dark">
+          <div class="p-2 bg-secondary text-white border-end border-dark">GPA</div>
+          <div class="p-2 bg-secondary text-white flex-fill">@Model.GPA</div>
+        </div>
+         <div class="d-flex border-bottom border-dark">
+          <div class="p-2 bg-secondary text-white border-end border-dark">Credit</div>
+          <div class="p-2 bg-secondary text-white flex-fill">@Model.Credit</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-7"></div>
+  </div>
+</div>
