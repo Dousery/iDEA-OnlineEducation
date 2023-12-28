@@ -1,9 +1,8 @@
 @model UserDataModel
 @using System.Security.Claims
-<div class="container mx-5 mt-5">
-  <div class="row">
-    <div class="col-1"></div>
-    <div class="col-4">
+<div class="container mt-3">
+  <div class="row flex-md-row">
+    <div class="col-md-4">
       <div class="card bg-dark">
         <div class="d-flex justify-content-center">
           <img src="https://source.unsplash.com/250x250?person" class="rounded mt-4" height="175px" width="175px">
@@ -20,12 +19,16 @@
           <div class="p-2 bg-secondary text-white border-end border-dark">GPA</div>
           <div class="p-2 bg-secondary text-white flex-fill">@Model.GPA</div>
         </div>
-         <div class="d-flex border-bottom border-dark">
+        <div class="d-flex border-bottom border-dark">
           <div class="p-2 bg-secondary text-white border-end border-dark">Credit</div>
           <div class="p-2 bg-secondary text-white flex-fill">@Model.Credit</div>
         </div>
       </div>
     </div>
-    <div class="col-7"></div>
+    <div class="col-md-8">
+      <div class="container">
+        <h1>Account info such as today's sessions and assignment info will go in this container</h1>
+      </div>
+    </div>
   </div>
 </div>

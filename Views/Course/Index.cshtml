@@ -1,8 +1,35 @@
-@model List<Course>
-@foreach (var kurs in Model)
-{
+@model CoursesModel
+<div class="container mx-5 mt-5">
 
-    <p>@kurs.ID</p>
-    <p>@kurs.Name</p>
-    <img src="~/img/@kurs.Image" width="100" alt="@kurs.Name">
-}
+    <div class="row flex-md-row">
+        @foreach (Course course in Model.Courses)
+        {
+            <div class="col-md-4 mb-2">
+                <div class="card bg-dark">
+                    <div class="card-body">
+                        <h3 class="card-title text-white">@(course.CourseName)</h3>
+                        <p class="card-text text-white">Course ID : @course.CourseID</p>
+                    </div>
+                    <div class="nav">
+                        <div class="nav-item">
+                            <a href="/Course/Info/@course.CourseID" class="nav-link btn btn-primary mx-3 mb-3 text-white fs-5">Info</a>
+                        </div>
+                    </div>
+                    <div class="d-flex border-bottom border-dark">
+                        <div class="p-2 bg-secondary text-white border-end border-dark" style="width:60px;">Credit</div>
+                        <div class="p-2 bg-secondary text-white flex-fill">@course.Credit</div>
+                    </div>
+                    <div class="d-flex border-bottom border-dark">
+                        <div class="p-2 bg-secondary text-white border-end border-dark" style="width:60px;">Score</div>
+                        <div class="p-2 bg-secondary text-white flex-fill">@course.Score</div>
+                    </div>
+                    <div class="d-flex border-bottom border-dark">
+                        <div class="p-2 bg-secondary text-white border-end border-dark" style="width:60px;">Grade</div>
+                        <div class="p-2 bg-secondary text-white flex-fill">@course.Grade</div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>

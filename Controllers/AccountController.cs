@@ -88,16 +88,16 @@ namespace iDEA.Controllers
 
                 ID = AccountID,
 
-                Department = (from combined in
-                      (from student in _context.Students
-                        where student.ID == AccountID
-                        select new { student.ID, student.Department })
-                        .Union
-                        (from lecturer in _context.Lecturers
-                         where lecturer.ID == AccountID
-                         select new { lecturer.ID, lecturer.Department })
-                              select combined.Department)
-                  .FirstOrDefault(),
+                Department = _context.Students
+                    .Where(student => student.ID == AccountID)
+                    .Select(student => new { ID = student.ID, Department = student.Department })
+                    .Union(
+                        _context.Lecturers
+                            .Where(lecturer => lecturer.ID == AccountID)
+                            .Select(lecturer => new { ID = lecturer.ID, Department = lecturer.Department })
+                    )
+                    .Select(combined => combined.Department)
+                    .FirstOrDefault(),
 
                 IsStudent = _context.Students.Any(x => x.ID == AccountID),
 

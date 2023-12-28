@@ -16,10 +16,10 @@
 <body class="bg-secondary">
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand ps-4" href="">
+            <a class="navbar-brand ps-4" href="/Account/Index">
                 <img src="/img/ideaLogo2.png" alt="Logo" width="40" height="40">
             </a>
-            <a class="navbar-brand" style="color:rgb(43,205,208)" href="#">iDEA</a>
+            <a class="navbar-brand" style="color:rgb(43,205,208)" href="/Account/Index">iDEA</a>
             <button class="navbar-toggler style=" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -27,19 +27,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item dropdown ps-4">
-                        <a class="nav-link active dropdown-toggle" style="color:lightgoldenrodyellow;" href="#"
-                            id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Derslerim
-                        </a>
-                        <ul class="dropdown-menu bg-dark w-25" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item bg-dark "
-                                    style="color:lightgoldenrodyellow; border-top: 2px solid rgb(43, 205, 208); border-bottom: 0.5px solid rgb(43, 205, 208);"
-                                    href="#">> Fizik</a></li>
-                            <li><a class="dropdown-item bg-dark "
-                                    style="color:lightgoldenrodyellow; border-top: 0.5px solid rgb(43, 205, 208);"
-                                    href="#">> Kimya</a></li>
-                        </ul>
+                    <li class="nav-item ps-4">
+                        <a class="nav-link navbar active" style="color: lightgoldenrodyellow;" aria-current="page"
+                            href="/Course/Index">Derslerim</a>
                     </li>
                     <li class="nav-item ps-4">
                         <a class="nav-link navbar active" style="color: lightgoldenrodyellow;" aria-current="page"
@@ -67,7 +57,7 @@
                         <!--  <i class="fas fa-user"></i> -->
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#"><i class="fas fa-sliders-h fa-fw"></i> Account</a></li>
+                        <li><a class="dropdown-item" href="/Account/Index"><i class="fas fa-sliders-h fa-fw"></i> Account</a></li>
                         <li><a class="dropdown-item" href="#"><i class="fas fa-cog fa-fw"></i> Settings</a></li>
                         <li>
                             <hr class="dropdown-divider">
@@ -82,7 +72,7 @@
     @RenderBody()
 
     <div class="navbar navbar-expand-sm bg-light fixed-bottom bg-dark">
-        <div class="container d-flex align-items-center">
+        <div class="container d-"flex align-items-center">
             <ul class="nav justify-content-center">
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary text-white">Home</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary text-white">About</a></li>
