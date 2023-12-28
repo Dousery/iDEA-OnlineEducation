@@ -8,7 +8,7 @@
           <img src="https://source.unsplash.com/250x250?person" class="rounded mt-4" height="175px" width="175px">
         </div>
         <div class="card-body">
-          <h3 class="card-title text-white">@(User.FindFirstValue(ClaimTypes.GivenName))</h3>
+          <h3 class="card-title text-white">@Model.Name</h3>
           <p class="card-text text-white">@Model.Department</p>
         </div>
         <div class="d-flex border-bottom border-dark">

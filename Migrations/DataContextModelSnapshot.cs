@@ -19,7 +19,7 @@ namespace iDEA.Migrations
 
             modelBuilder.Entity("iDEA.Entity.Assignment", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("AssignmentID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -29,10 +29,7 @@ namespace iDEA.Migrations
                     b.Property<DateTime>("Deadline")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Info")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("ID");
+                    b.HasKey("AssignmentID");
 
                     b.ToTable("Assignments");
                 });
@@ -162,6 +159,29 @@ namespace iDEA.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("People");
+                });
+
+            modelBuilder.Entity("iDEA.Entity.Question", b =>
+                {
+                    b.Property<int>("QuestionID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("AssignmentID")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CorrectAnswer")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Options")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("QuestionID");
+
+                    b.ToTable("Questions");
                 });
 
             modelBuilder.Entity("iDEA.Entity.Record", b =>

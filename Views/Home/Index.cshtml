@@ -1,4 +1,4 @@
-@model LoginModel
+﻿@model LoginModel
 @{
   Layout = null;
 }
@@ -52,11 +52,11 @@
     </button>
     <form class="d-flex mx-2" method="post" action="/Account/Login">
       @if (ViewBag.Invalid) {
-        <input asp-for="Username" class="form-control me-2 bg-danger" placeholder="Username" required>
-        <input asp-for="Password" class="form-control me-2 bg-danger" placeholder="Password" required>
+        <input asp-for="Username" class="form-control me-2 bg-danger" style= "font-family: 'Sans', sans-serif; font-size: 12px;"placeholder="Username" required>
+        <input asp-for="Password" class="form-control me-2 bg-danger" style="font-family: 'Sans', sans-serif; font-size: 12px;" placeholder="Password" required>
       } else {
-        <input asp-for="Username" class="form-control me-2" placeholder="Username" required>
-        <input asp-for="Password" class="form-control me-2" placeholder="Password" required>
+        <input asp-for="Username" class="form-control me-2" style="font-weight: bold; font-family: 'Sans', sans-serif; font-size: 12px;" placeholder="Username" required>
+        <input asp-for="Password" class="form-control me-2" style="font-weight: bold; font-family: 'Sans', sans-serif; font-size: 12px;" placeholder="Password" required>
       }
       <button type="submit" class="btn btn-primary me-2">Login</button>
     </form>
@@ -73,9 +73,9 @@
     <div class="video-background-content container h-100">
       <div class="d-flex h-100 text-center align-items-center">
         <div class="w-100 text-white">
-          <h1 class="display-5" style="color:rgb(125, 5, 246);font-weight: bold;">ONLİNE EĞİTİMİN </h1>
-          <h1 class="display-5" style="color:rgb(125, 5, 246);font-weight: bold;">GÜCÜNÜ GÖRMEYE HAZIR MISIN?</h1>
-          <p class="lead mt-5 mb-0">Eğer cevabın evetse hemen hocalarımızın size tanımladığı </p>
+          <h1 class="display-5" style="color:rgb(125, 5, 246);font-weight: bold; font-family: 'Sans', sans-serif;">ONLİNE EĞİTİMİN </h1>
+          <h1 class="display-5" style="color:rgb(125, 5, 246);font-weight: bold; font-family: 'Arial', sans-serif;">GÜCÜNÜ GÖRMEYE HAZIR MISIN?</h1>
+          <p class="lead mt-5 mb-0 ">Eğer cevabın evetse hemen hocalarımızın size tanımladığı </p>
           <p class="lead mb-5">hesap bilgileri
             ile siteye giriş yapın ve eğlenerek öğrenmenin tadını çıkarın. </p>
         </div>

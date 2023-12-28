@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace iDEA.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,15 +15,14 @@ namespace iDEA.Migrations
                 name: "Assignments",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "INTEGER", nullable: false)
+                    AssignmentID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     CourseID = table.Column<int>(type: "INTEGER", nullable: false),
-                    Deadline = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Info = table.Column<string>(type: "TEXT", nullable: true)
+                    Deadline = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Assignments", x => x.ID);
+                    table.PrimaryKey("PK_Assignments", x => x.AssignmentID);
                 });
 
             migrationBuilder.CreateTable(
@@ -122,6 +121,22 @@ namespace iDEA.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_People", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Questions",
+                columns: table => new
+                {
+                    QuestionID = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    AssignmentID = table.Column<int>(type: "INTEGER", nullable: false),
+                    Text = table.Column<string>(type: "TEXT", nullable: true),
+                    Options = table.Column<string>(type: "TEXT", nullable: true),
+                    CorrectAnswer = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Questions", x => x.QuestionID);
                 });
 
             migrationBuilder.CreateTable(
@@ -234,6 +249,9 @@ namespace iDEA.Migrations
 
             migrationBuilder.DropTable(
                 name: "People");
+
+            migrationBuilder.DropTable(
+                name: "Questions");
 
             migrationBuilder.DropTable(
                 name: "Records");
