@@ -138,7 +138,7 @@ namespace iDEA.Entity {
                     ID = ++count,
                     Name = "Data Structures",
                     Credit = 4,
-                    ResourcePath = "~/CourseResources/1"
+                    ResourcePath = "~/CourseResources/1",
                 });
                 context.Courses.Add(new Course{
                     ID = ++count,
@@ -268,6 +268,279 @@ namespace iDEA.Entity {
                     PersonID = 10,
                     CourseID = 2
                 });
+            }
+
+            if (!context.Assignments.Any()) {
+                int count=0;
+
+                context.Assignments.Add(new Assignment{
+                    AssignmentID = ++count,
+                    CourseID=1,                           //data structure
+                    Deadline=DateTime.Now.AddDays(7),
+                });
+
+                context.Assignments.Add(new Assignment{
+                    AssignmentID = ++count,
+                    CourseID=2,                           //algorithm
+                    Deadline=DateTime.Now.AddDays(10),
+                });
+
+                context.Assignments.Add(new Assignment{
+                    AssignmentID = ++count,
+                    CourseID=4,                           //circuits assignmentID=3
+                    Deadline=DateTime.Now.AddDays(10),
+                });
+
+                context.Assignments.Add(new Assignment{
+                    AssignmentID = ++count,
+                    CourseID=5,                           //thermodynamıc  assignmentID=4
+                    Deadline=DateTime.Now.AddDays(5),
+                });
+
+            }
+
+            if (!context.Questions.Any()) {
+                int count=0;
+                context.Questions.Add(new Question{
+                    QuestionID=++count,
+                    AssignmentID=1,
+                    Text="Elemanları key-value çiftleri halinde depolanan bir veri yapısı hangisidir?",
+                    Options="a) Heap b) Queue c) Set d) Hash Table",
+                    CorrectAnswer="d"
+                });
+
+                context.Questions.Add(new Question{
+                    QuestionID=++count,
+                    AssignmentID=1,
+                    Text="Her elemanının kendisinden önceki ve sonraki elemanı gösteren bir bağlantıya sahip olan veri yapısı hangisidir?",
+                    Options="a) Stack b) Array c) Linked List d) Hash Table",
+                    CorrectAnswer="c"
+                });
+
+                context.Questions.Add(new Question{
+                    QuestionID=++count,
+                    AssignmentID=1,
+                    Text="Bir düğümün en fazla iki çocuğa sahip olabildiği, her düğümün sol alt ağaçtaki düğümlerinden daha küçük ve sağ alt ağaçtaki düğümlerden daha büyük olduğu bir veri yapısı hangisidir?",
+                    Options="a) Heap b) Graph c) Binary Search Tree d) Array",
+                    CorrectAnswer="c"
+                });
+
+                context.Questions.Add(new Question{
+                    QuestionID=++count,
+                    AssignmentID=1,
+                    Text="Bir elemanın birden fazla yöne bağlı olabileceği ve döngüler içerebilecek şekilde ilişkilendirildiği bir veri yapısı hangisidir?",
+                    Options="a) Graph b) Heap c) Tree d) Hash Table",
+                    CorrectAnswer="a"
+                });
+
+                context.Questions.Add(new Question{
+                    QuestionID=++count,
+                    AssignmentID=2,
+                    Text="Bir graf üzerinde en kısa yol hesaplamak için hangi algoritma kullanılır?",
+                    Options="a) Dijkstra's Algorithm b) Merge Sort c) Bubble Sort d) Insertion Sort",
+                    CorrectAnswer="a"
+                });
+
+                context.Questions.Add(new Question{
+                    QuestionID=++count,
+                    AssignmentID=2,
+                    Text="Veri sıkıştırma işlemlerinde kullanılan bir algoritma aşağıdakilerden hangisidir?",
+                    Options="a) Prim's Algorithm b) Huffman Coding c) Kruskal's Algorithm d) DFS (Depth-First Search)",
+                    CorrectAnswer="b"
+                });
+
+                context.Questions.Add(new Question{
+                    QuestionID=++count,
+                    AssignmentID=2,
+                    Text="İki sıralı liste birleştirilirken hangi algoritma kullanılır?",
+                    Options="a) Merge Sort b) Quick Sort c) Bubble Sort d) Insertion Sort",
+                    CorrectAnswer="a"
+                });
+
+
+                context.Questions.Add(new Question{
+                    QuestionID=++count,
+                    AssignmentID=3,
+                    Text="Elektrik devrelerinde kullanılan bir düğme anahtarın temel görevi nedir?",
+                    Options="a) Akımı artırmak b) Devreyi kapatmak ve açmak c) Gerilimi ölçmek d) Direnci değiştirmek",
+                    CorrectAnswer="b"
+                });
+
+                context.Questions.Add(new Question{
+                    QuestionID=++count,
+                    AssignmentID=3,
+                    Text="Bir kondansatör ne işe yarar?",
+                    Options="a) Elektrik akımını düşürür b) Elektrik enerjisini depolar c) Direnci artırır d) Işıma yapar",
+                    CorrectAnswer="b"
+                });
+
+                context.Questions.Add(new Question{
+                    QuestionID=++count,
+                    AssignmentID=3,
+                    Text="Transformatörlerin temel görevi nedir?",
+                    Options="a) Akımı kontrol etmek b) Işıma Yapmak c) Gerilimi düşürmek veya yükseltmek d) Direnci artırmak",
+                    CorrectAnswer="c"
+                });
+
+                context.Questions.Add(new Question{
+                    QuestionID=++count,
+                    AssignmentID=5,
+                    Text="Bir buzdolabı içerisindeki bir madde, içeriden dışarı doğru ısı transferi sonucu donarak katı hale geçer. Bu süreç aşağıdakilerden hangisine örnektir?",
+                    Options="a) İzobarik süreç b) İzotermal süreç c) İzokorik süreç d) Adiabatik süreç",
+                    CorrectAnswer="c"
+                });
+
+                context.Questions.Add(new Question{
+                    QuestionID=++count,
+                    AssignmentID=5,
+                    Text="Bir buhar makinesinde, buharın basıncı sabit tutularak yapılan bir süreçte, makineye verilen ısı miktarı ile yapılan iş arasındaki ilişki nasıldır?",
+                    Options="a) İki miktar birbirinden bağımsızdır. b) İki miktar doğru orantılıdır. c) İki miktar ters orantılıdır. d) İki miktar arasında belirli bir ilişki yoktur.",
+                    CorrectAnswer="a"
+                });
+
+
+            }
+
+            if (!context.TakenAssignments.Any()) {
+
+                context.TakenAssignments.Add(new TakenAssignment{
+                    PersonID = 1,
+                    AssignmentID=1,
+                });
+
+                context.TakenAssignments.Add(new TakenAssignment{
+                    PersonID = 2,
+                    AssignmentID=2,
+                });
+
+                context.TakenAssignments.Add(new TakenAssignment{
+                    PersonID = 5,
+                    AssignmentID=3,
+                });
+
+                context.TakenAssignments.Add(new TakenAssignment{
+                    PersonID = 3,
+                    AssignmentID=4,
+                });
+
+            }
+
+            if (!context.Exams.Any()) {
+
+                int count=0;
+
+                context.Exams.Add(new Exam{
+                    ID= ++count,
+                    CourseID=1,
+                    Time=DateTime.Now.AddDays(-80),
+                    Info="Data Structure Midterm"
+                });
+
+                context.Exams.Add(new Exam{
+                    ID= ++count,
+                    CourseID=1,
+                    Time=DateTime.Now.AddDays(-10),
+                    Info="Data Structure Final"
+                });
+
+                context.Exams.Add(new Exam{
+                    ID= ++count,
+                    CourseID=2,
+                    Time=DateTime.Now.AddDays(-79),
+                    Info="Algorithm Midterm"
+                });
+
+                context.Exams.Add(new Exam{
+                    ID= ++count,
+                    CourseID=2,
+                    Time=DateTime.Now.AddDays(-9),
+                    Info="Algorithm Final"
+                });
+
+                context.Exams.Add(new Exam{
+                    ID= ++count,
+                    CourseID=3,
+                    Time=DateTime.Now.AddDays(-78),
+                    Info="Semiconductors Midterm"
+                });
+
+                context.Exams.Add(new Exam{
+                    ID= ++count,
+                    CourseID=3,
+                    Time=DateTime.Now.AddDays(-8),
+                    Info="Semiconductors Final"
+                });
+
+                context.Exams.Add(new Exam{
+                    ID= ++count,
+                    CourseID=4,
+                    Time=DateTime.Now.AddDays(-77),
+                    Info="Circuits Midterm"
+                });
+
+                context.Exams.Add(new Exam{
+                    ID= ++count,
+                    CourseID=4,
+                    Time=DateTime.Now.AddDays(-7),
+                    Info="Circuits Final"
+                });
+
+                context.Exams.Add(new Exam{
+                    ID= ++count,
+                    CourseID=5,
+                    Time=DateTime.Now.AddDays(-76),
+                    Info="Thermodynamics Midterm"
+                });
+
+                context.Exams.Add(new Exam{
+                    ID= ++count,
+                    CourseID=5,
+                    Time=DateTime.Now.AddDays(-6),
+                    Info="Thermodynamics Final"
+                });
+
+                context.Exams.Add(new Exam{
+                    ID= ++count,
+                    CourseID=6,
+                    Time=DateTime.Now.AddDays(-75),
+                    Info="Fluid Mechanics Midterm"
+                });
+
+                context.Exams.Add(new Exam{
+                    ID= ++count,
+                    CourseID=6,
+                    Time=DateTime.Now.AddDays(-5),
+                    Info="Fluid Mechanics Final"
+                });
+
+                context.Exams.Add(new Exam{
+                    ID= ++count,
+                    CourseID=7,
+                    Time=DateTime.Now.AddDays(-74),
+                    Info="Calculus Midterm"
+                });
+
+                context.Exams.Add(new Exam{
+                    ID= ++count,
+                    CourseID=7,
+                    Time=DateTime.Now.AddDays(-4),
+                    Info="Calculus Final"
+                });
+
+                context.Exams.Add(new Exam{
+                    ID= ++count,
+                    CourseID=8,
+                    Time=DateTime.Now.AddDays(-73),
+                    Info="Differential Equations Midterm"
+                });
+
+                context.Exams.Add(new Exam{
+                    ID= ++count,
+                    CourseID=8,
+                    Time=DateTime.Now.AddDays(-3),
+                    Info="Differential Equations Final"
+                });
+
             }
 
             context.SaveChanges();

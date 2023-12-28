@@ -21,6 +21,8 @@ namespace iDEA.Entity {
         public DbSet<TakenAssignment> TakenAssignments => Set<TakenAssignment>();
         public DbSet<TakenCourse> TakenCourses => Set<TakenCourse>();
         public DbSet<TakenExam> TakenExams => Set<TakenExam>();
+
+        public DbSet<Question> Questions => Set<Question>();
     }
 
 }

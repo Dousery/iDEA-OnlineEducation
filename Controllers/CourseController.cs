@@ -6,24 +6,16 @@ namespace iDEA.Controllers
 
     public class CourseController : Controller
     {
-        public IActionResult Index()
+        public async Task<IActionResult> Index(UserDataModel model)
         {
-            var kurs = new Course();
-            kurs.ID = 1;
-            kurs.Name = "Matematik";
-            return View(kurs);
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View();
         }
 
-        public IActionResult List()
-        {
-            var kursListesi = new List<Course>(){
-                new Course(){ ID=1, Name="Matematik",Image="1.jpg"},
-                new Course(){ ID=2, Name="Fen"},
-                new Course(){ ID=3, Name="Kimya"}
-            };
-
-            return View(kursListesi);
-        }
 
     }
 
