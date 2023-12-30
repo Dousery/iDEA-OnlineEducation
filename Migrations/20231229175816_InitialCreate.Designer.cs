@@ -11,8 +11,8 @@ using iDEA.Entity;
 namespace iDEA.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20231226191503_initial")]
-    partial class initial
+    [Migration("20231229175816_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,6 +30,9 @@ namespace iDEA.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Deadline")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
                     b.HasKey("AssignmentID");

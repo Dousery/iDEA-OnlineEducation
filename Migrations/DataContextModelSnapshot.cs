@@ -29,6 +29,9 @@ namespace iDEA.Migrations
                     b.Property<DateTime>("Deadline")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("AssignmentID");
 
                     b.ToTable("Assignments");

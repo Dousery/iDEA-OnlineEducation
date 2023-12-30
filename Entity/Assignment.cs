@@ -9,6 +9,8 @@ namespace iDEA.Entity {
 
         public int CourseID { get; set; }
 
+        public String? Name { get; set; }
+
         public DateTime Deadline { get; set; }
     }
 

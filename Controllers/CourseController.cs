@@ -73,9 +73,50 @@ namespace iDEA.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
+            var query = _context.Courses.FirstOrDefault(x => x.ID == id);
 
+            var takenCourse = _context.TakenCourses.FirstOrDefault(x => x.PersonID == AccountID && x.CourseID == id);
 
-            return View();
+            var takenAssignment = _context.TakenAssignments
+            .Where(x => x.PersonID == AccountID)
+            .Join(_context.Assignments, ta => ta.AssignmentID, a => a.AssignmentID, (a ,ta) => new {a, ta})
+            .Where(x => x.ta.CourseID == id);
+
+            var takenExam = _context.TakenExams
+            .Where(x => x.PersonID == AccountID)
+            .Join(_context.Exams, te => te.ExamID, e => e.ID, (e ,te) => new {e, te})
+            .Where(x => x.te.CourseID == id);
+
+            CourseInfoModel model = new CourseInfoModel(){
+                CourseID = id,
+                CourseName = query.Name,
+                Credit = query.Credit,
+                CourseInfo = "Placeholder text. TODO: Add a column to Courses for Info.",
+                Assignments = new List<Models.Assignment>(),
+                Exams = new List<Models.Exam>(),
+                Sessions = new List<Models.Session>(),
+                Score = takenCourse.Point,
+                Grade = takenCourse.Grade
+            };
+
+            foreach(var assignment in takenAssignment) {
+                model.Assignments.Add(new Models.Assignment{
+                    ID = assignment.a.AssignmentID,
+                    Name = assignment.ta.Name,
+                    Point = assignment.a.Point,
+                    Deadline = assignment.ta.Deadline
+                });
+            }
+            foreach(var exam in takenExam) {
+                model.Exams.Add(new Models.Exam{
+                    ID = exam.e.ExamID,
+                    Time = exam.te.Time,
+                    Info = exam.te.Info,
+                    Point = exam.e.Point 
+                });
+            }
+
+            return View(model);
         }
 
         public async Task<IActionResult> Assignment() {
