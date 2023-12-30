@@ -114,8 +114,41 @@ namespace iDEA.Controllers
                 takenCourse => takenCourse.CourseID,
                 course => course.ID,
                 (takenCourse, course) => course.Credit).DefaultIfEmpty()
-                .Sum()
+                .Sum(),
+
+                Assignments = new List<Models.Assignment>(),
+                Exams = new List<Models.Exam>(),
+
             };
+
+            var assignments = _context.TakenAssignments.Where(x => x.PersonID == AccountID).Take(5);
+
+            foreach (var row in assignments) {
+                var assignment = _context.Assignments.FirstOrDefault(x => x.AssignmentID == row.AssignmentID);
+
+                model.Assignments.Add(new Models.Assignment{
+                    Course = _context.Courses.FirstOrDefault(x => x.ID == assignment.CourseID).Name,
+                    ID = row.AssignmentID,
+                    Name = assignment.Name,
+                    Point = row.Point,
+                    Deadline = assignment.Deadline
+                });
+            }
+
+            var exams = _context.TakenExams.Where(x => x.PersonID == AccountID).Take(5);
+
+            foreach (var row in exams) {
+                var exam = _context.Exams.FirstOrDefault(x => x.ID == row.ExamID);
+
+                model.Exams.Add(new Models.Exam{
+                    Course = _context.Courses.FirstOrDefault(x => x.ID == exam.CourseID).Name,
+                    ID = row.ExamID,
+                    Info = exam.Info,
+                    Point = row.Point,
+                    Time = exam.Time,
+                });
+            }
+
             return View(model);
         }
 

@@ -7,6 +7,8 @@
         public bool IsLecturer { get; set; }
         public float GPA { get; set; }
         public int Credit { get; set; }
+        public IList<Exam> Exams { get; set; }
+        public IList<Assignment> Assignments { get; set; } 
     }
 }
 

@@ -27,7 +27,53 @@
     </div>
     <div class="col-md-8">
       <div class="container">
-        <h1>Account info such as today's sessions and assignment info will go in this container</h1>
+        <p class="h3 border ms-5 py-1 px-2 mb-3 border-dark text-dark rounded">Exams</p>
+        <table class="table ms-3 table-hover border border-dark table-primary rounded">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">Course</th>
+              <th scope="col">Info</th>
+              <th scope="col">Time</th>
+              <th scope="col">Point</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach (var exam in Model.Exams)
+            {
+              <tr>
+                <th>@exam.Course</th>
+                <th>@exam.Info</th>
+                <th>@exam.Time</th>
+                <th>@exam.Point</th>
+              </tr>
+            }
+          </tbody>
+        </table>
+        <p class="h3 border ms-5 py-1 px-2 mb-3 border-dark text-dark rounded">Assignments</p>
+        <table class="table ms-3 table-hover border border-dark table-primary rounded">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">Course</th>
+              <th scope="col">Name</th>
+              <th scope="col">Deadline</th>
+              <th scope="col">Point</th>
+              <th scope="col">Info</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach (var assignment in Model.Assignments)
+            {
+              <tr>
+                <th>@assignment.Course</th>
+                <th>@assignment.Name</th>
+                <th>@assignment.Deadline</th>
+                <th>@assignment.Point</th>
+                <th><a href="/Course/Assignment/@assignment.ID" class="btn btn-primary">View</a></th>
+              </tr>
+            }
+          </tbody>
+        </table>
+
       </div>
     </div>
   </div>
