@@ -1,12 +1,14 @@
 namespace iDEA.Models {
 
     public class Assignment {
+        public String? Course { get; set; }
         public int ID { get; set; }
         public String? Name { get; set; }
         public float Point { get; set; }
         public DateTime Deadline { get; set; }
     }
     public class Exam {
+        public String? Course { get; set; }
         public int ID { get; set; }
         public DateTime Time { get; set; }
         public String? Info { get; set; }

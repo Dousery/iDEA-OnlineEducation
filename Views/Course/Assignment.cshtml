@@ -1,0 +1,41 @@
+@model QuestionAnswerModel
+<form action="/Course/Answer/@Model.AssignmentID" method="post">
+    @{
+
+        int i = 0;
+    }
+    @foreach (var question in Model.Questions)
+    {
+        <div class="card bg-dark my-3 mx-1">
+            <div class="card-body">
+                <p class="card-text">@question.Text</p>
+            </div>
+            <div class="card-body">
+                <p class="card-text">@question.Options</p>
+            </div>
+            <div>
+                <fieldset>
+                    <div class="d-flex border-bottom border-dark">
+                        <div class="p-2 bg-secondary text-white border-end border-dark" style="width:60px;">A)</div>
+                        <input type="radio" name="Answers[@i]" value="a" class="p-2 bg-secondary text-white flex-fill">
+                    </div>
+                    <div class="d-flex border-bottom border-dark">
+                        <div class="p-2 bg-secondary text-white border-end border-dark" style="width:60px;">B)</div>
+                        <input type="radio" name="Answers[@i]" value="b" class="p-2 bg-secondary text-white flex-fill">
+                    </div>
+                    <div class="d-flex border-bottom border-dark">
+                        <div class="p-2 bg-secondary text-white border-end border-dark" style="width:60px;">C)</div>
+                        <input type="radio" name="Answers[@i]" value="c" class="p-2 bg-secondary text-white flex-fill">
+                    </div>
+                    <div class="d-flex border-bottom border-dark">
+                        <div class="p-2 bg-secondary text-white border-end border-dark" style="width:60px;">D)</div>
+                        <input type="radio" name="Answers[@i]" value="d" class="p-2 bg-secondary text-white flex-fill">
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+
+        i++;
+    }
+    <button type="submit" class="btn btn-primary me-2">Submit</button>
+</form>

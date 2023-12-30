@@ -2,6 +2,7 @@ using System.Security.Claims;
 using iDEA.Entity;
 using iDEA.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace iDEA.Controllers
 {
@@ -119,7 +120,7 @@ namespace iDEA.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> Assignment() {
+        public async Task<IActionResult> Assignment(int id) {
 
             if (!User.Identity.IsAuthenticated)
             {
@@ -128,7 +129,89 @@ namespace iDEA.Controllers
 
             int AccountID = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
 
-            return View();
+            if (!_context.TakenAssignments.Any(x => x.PersonID == AccountID && x.AssignmentID == id))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            if (_context.TakenAssignments.FirstOrDefault(x => x.PersonID == AccountID && x.AssignmentID == id).Point != -1) {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var query = _context.Questions.Where(x => x.AssignmentID == id);
+
+            QuestionAnswerModel model = new QuestionAnswerModel(){
+                Questions = new List<Models.Question>(),
+                Answers = new List<string>(),
+                AssignmentID = id
+            };
+
+            foreach(var question in query) {
+                model.Questions.Add(new Models.Question {
+                    Text = question.Text,
+                    Options = question.Options,
+                });
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Answer(int id, QuestionAnswerModel model) {
+
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            int AccountID = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+
+            if (!_context.TakenAssignments.Any(x => x.PersonID == AccountID && x.AssignmentID == id))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var assignment = _context.TakenAssignments.FirstOrDefault(x => x.PersonID == AccountID && x.AssignmentID == id);
+
+            if (assignment.Point != -1) {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var questions = _context.Questions.Where(x => x.AssignmentID == id).ToList();
+
+
+            int correct = 0;
+            for (int i = 0; i < questions.Count; i++)
+            {
+                if (questions[i].CorrectAnswer == model.Answers[i]) {
+                    correct++;
+                }
+            }
+
+            assignment.Point = (int)(((float)correct / questions.Count) * 100);
+
+            _context.SaveChanges();
+
+            var courseID = _context.Assignments.FirstOrDefault(x => x.AssignmentID == assignment.AssignmentID).CourseID;
+
+            var course = _context.TakenCourses.FirstOrDefault(x => x.CourseID == courseID && x.PersonID == AccountID);
+
+            var averagePoint = _context.TakenExams
+                    .Where(exam => exam.PersonID == course.PersonID)
+                    .Join(_context.Exams, exam => exam.ExamID, e => e.ID, (exam, e) => new { exam, e })
+                    .Where(joined => joined.e.CourseID == course.CourseID)
+                    .Select(joined => joined.exam.Point)
+                    .Union(_context.TakenAssignments
+                        .Join(_context.Assignments,ta => ta.AssignmentID, a => a.AssignmentID, (ta, a) => new {ta, a})
+                        .Where(x => x.a.CourseID == course.CourseID && x.ta.PersonID == course.PersonID && x.ta.Point != -1)
+                        .Select(x => x.ta.Point))
+                    .Average();
+
+            course.Point = averagePoint;
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
         }
 
     }

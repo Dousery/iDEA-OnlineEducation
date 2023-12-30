@@ -103,7 +103,7 @@ namespace iDEA.Controllers
 
                 IsLecturer = _context.Lecturers.Any(x => x.ID == AccountID),
 
-                GPA = (float)_context.TakenCourses.Where(x => x.PersonID == AccountID)
+                GPA = (float)_context.TakenCourses.Where(x => x.PersonID == AccountID).DefaultIfEmpty()
                 .Average(x => x.Point >= 90 ? 4.0 :
                 x.Point >= 80 ? 3.0 :
                 x.Point >= 70 ? 2.0 :
@@ -113,10 +113,66 @@ namespace iDEA.Controllers
                 .Join(_context.Courses,
                 takenCourse => takenCourse.CourseID,
                 course => course.ID,
-                (takenCourse, course) => course.Credit)
+                (takenCourse, course) => course.Credit).DefaultIfEmpty()
                 .Sum()
             };
             return View(model);
+        }
+
+        public async Task<IActionResult> Assignment() {
+
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            int AccountID = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+
+            IList<Models.Assignment> assignments = new List<Models.Assignment>();
+
+            var query = _context.TakenAssignments.Where(x => x.PersonID == AccountID);
+
+            foreach (var row in query) {
+                var assignment = _context.Assignments.FirstOrDefault(x => x.AssignmentID == row.AssignmentID);
+
+                assignments.Add(new Models.Assignment{
+                    Course = _context.Courses.FirstOrDefault(x => x.ID == assignment.CourseID).Name,
+                    ID = row.AssignmentID,
+                    Name = assignment.Name,
+                    Point = row.Point,
+                    Deadline = assignment.Deadline
+                });
+            }
+
+            return View(assignments);
+        }
+
+        public async Task<IActionResult> Exam() {
+
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            int AccountID = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+
+            IList<Models.Exam> exams = new List<Models.Exam>();
+
+            var query = _context.TakenExams.Where(x => x.PersonID == AccountID);
+
+            foreach (var row in query) {
+                var exam = _context.Exams.FirstOrDefault(x => x.ID == row.ExamID);
+
+                exams.Add(new Models.Exam{
+                    Course = _context.Courses.FirstOrDefault(x => x.ID == exam.CourseID).Name,
+                    ID = row.ExamID,
+                    Info = exam.Info,
+                    Point = row.Point,
+                    Time = exam.Time,
+                });
+            }
+
+            return View(exams);
         }
     }
 }

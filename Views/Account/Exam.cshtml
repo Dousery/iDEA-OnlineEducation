@@ -1,0 +1,23 @@
+@model List<Exam>
+<p class="h3 border ms-5 py-1 px-2 mb-3 border-dark text-dark rounded">Exams</p>
+<table class="table ms-3 table-hover border border-dark table-primary rounded">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">Course</th>
+            <th scope="col">Info</th>
+            <th scope="col">Time</th>
+            <th scope="col">Point</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var exam in Model)
+        {
+            <tr>
+                <th>@exam.Course</th>
+                <th>@exam.Info</th>
+                <th>@exam.Time</th>
+                <th>@exam.Point</th>
+            </tr>
+        }
+    </tbody>
+</table>

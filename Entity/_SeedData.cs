@@ -488,24 +488,28 @@ namespace iDEA.Entity
                 {
                     PersonID = 1,
                     AssignmentID = 1,
+                    Point = -1
                 });
 
                 context.TakenAssignments.Add(new TakenAssignment
                 {
                     PersonID = 2,
                     AssignmentID = 2,
+                    Point = -1
                 });
 
                 context.TakenAssignments.Add(new TakenAssignment
                 {
                     PersonID = 5,
                     AssignmentID = 3,
+                    Point = -1
                 });
 
                 context.TakenAssignments.Add(new TakenAssignment
                 {
                     PersonID = 3,
                     AssignmentID = 4,
+                    Point = -1
                 });
 
             }
@@ -802,6 +806,10 @@ namespace iDEA.Entity
                     .Join(context.Exams, exam => exam.ExamID, e => e.ID, (exam, e) => new { exam, e })
                     .Where(joined => joined.e.CourseID == course.CourseID)
                     .Select(joined => joined.exam.Point)
+                    .Union(context.TakenAssignments
+                        .Join(context.Assignments,ta => ta.AssignmentID, a => a.AssignmentID, (ta, a) => new {ta, a})
+                        .Where(x => x.a.CourseID == course.CourseID && x.ta.PersonID == course.PersonID && x.ta.Point != -1)
+                        .Select(x => x.ta.Point)).DefaultIfEmpty()
                     .Average();
 
                 course.Point = averagePoint;

@@ -1,30 +1,25 @@
-<div class="container mx-5 mt-5">
-
-    <div class="row flex-md-row">
-            <div class="col-md-4 mb-2">
-                <div class="card bg-dark">
-                    <div class="card-body">
-                        <h3 class="card-title text-white">PLACEHOLDER COURSE NAME</h3>
-                    </div>
-                    <div class="nav">
-                        <div class="nav-item">
-                            <a href="/Course/Assignment/0" class="nav-link btn btn-primary mx-3 mb-3 text-white fs-5">Info</a>
-                        </div>
-                    </div>
-                    <div class="d-flex border-bottom border-dark">
-                        <div class="p-2 bg-secondary text-white border-end border-dark" style="width:60px;">Status</div>
-                        <div class="p-2 bg-secondary text-white flex-fill">PALCEHOLDER</div>
-                    </div>
-                    <div class="d-flex border-bottom border-dark">
-                        <div class="p-2 bg-secondary text-white border-end border-dark" style="width:60px;">Due date</div>
-                        <div class="p-2 bg-secondary text-white flex-fill">WHEN THE SUN EXPLODES</div>
-                    </div>
-                    <div class="d-flex border-bottom border-dark">
-                        <div class="p-2 bg-secondary text-white border-end border-dark" style="width:60px;">Info</div>
-                        <div class="p-2 bg-secondary text-white flex-fill">hi thisi s an assignment</div>
-                    </div>
-                </div>
-            </div>
-    </div>
-
-</div>
+@model List<Assignment>
+<p class="h3 border ms-5 py-1 px-2 mb-3 border-dark text-dark rounded">Assignments</p>
+<table class="table ms-3 table-hover border border-dark table-primary rounded">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">Course</th>
+            <th scope="col">Name</th>
+            <th scope="col">Deadline</th>
+            <th scope="col">Point</th>
+            <th scope="col">Info</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var assignment in Model)
+        {
+            <tr>
+                <th>@assignment.Course</th>
+                <th>@assignment.Name</th>
+                <th>@assignment.Deadline</th>
+                <th>@assignment.Point</th>
+                <th><a href="/Course/Assignment/@assignment.ID" class="btn btn-primary">View</a></th>
+            </tr>
+        }
+    </tbody>
+</table>
