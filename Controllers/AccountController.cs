@@ -62,7 +62,10 @@ namespace iDEA.Controllers
 
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
-
+            if (_context.Lecturers.FirstOrDefault(x => x.ID == isUser.ID) is not null)
+            {
+                return RedirectToAction("Index", "Lecturer");
+            }
             return RedirectToAction("Index", "Account");
         }
 
@@ -82,41 +85,39 @@ namespace iDEA.Controllers
 
             int AccountID = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
 
-            var model = new UserDataModel
+            var model = new StudentDataModel
             {
                 Name = User.FindFirstValue(ClaimTypes.GivenName),
 
                 ID = AccountID,
 
                 Department = _context.Students
-                    .Where(student => student.ID == AccountID)
-                    .Select(student => new { ID = student.ID, Department = student.Department })
-                    .Union(
-                        _context.Lecturers
-                            .Where(lecturer => lecturer.ID == AccountID)
-                            .Select(lecturer => new { ID = lecturer.ID, Department = lecturer.Department })
-                    )
-                    .Select(combined => combined.Department)
-                    .FirstOrDefault(),
-
-                IsStudent = _context.Students.Any(x => x.ID == AccountID),
-
-                IsLecturer = _context.Lecturers.Any(x => x.ID == AccountID),
+                .Where(student => student.ID == AccountID)
+                .Select(student => new { ID = student.ID, Department = student.Department })
+                .Union(
+                    _context.Lecturers
+                        .Where(lecturer => lecturer.ID == AccountID)
+                        .Select(lecturer => new { ID = lecturer.ID, Department = lecturer.Department })
+                )
+                .Select(combined => combined.Department)
+                .FirstOrDefault(),
 
                 GPA = (float)_context.TakenCourses.Where(x => x.PersonID == AccountID)
-                .Average(x => x.Point >= 90 ? 4.0 :
-                x.Point >= 80 ? 3.0 :
-                x.Point >= 70 ? 2.0 :
-                x.Point >= 60 ? 1.0 : 0.0),
+            .Average(x => x.Point >= 90 ? 4.0 :
+            x.Point >= 80 ? 3.0 :
+            x.Point >= 70 ? 2.0 :
+            x.Point >= 60 ? 1.0 : 0.0),
 
                 Credit = (int)_context.TakenCourses.Where(x => x.PersonID == AccountID)
-                .Join(_context.Courses,
-                takenCourse => takenCourse.CourseID,
-                course => course.ID,
-                (takenCourse, course) => course.Credit)
-                .Sum()
+            .Join(_context.Courses,
+            takenCourse => takenCourse.CourseID,
+            course => course.ID,
+            (takenCourse, course) => course.Credit)
+            .Sum()
             };
+
             return View(model);
+
         }
     }
 }
