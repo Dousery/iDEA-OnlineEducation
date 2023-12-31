@@ -1,0 +1,47 @@
+@model FeedbackModel
+
+<style>
+  #send_bt {
+    border-radius: 10px;
+    width: 80px;
+
+  }
+</style>
+
+<body>
+
+  <div class="contact_section layout_padding"><br>
+    <div class="container">
+      <div class="contact_section_2">
+        <div class="row">
+          <div class="col-md-6">
+            <h1 class="contact_taital">Contact Us</h1><br>
+            <p>P: 0552 555 55 55</p>
+            <p>Fax: 0232 235 23 53</p>
+            <p>Email: info@idea.com</p>
+            <form class="mail_section_1" action="/Account/Contact" method="post">
+              <input class="mail_text my-1" placeholder="Name" asp-for="Name"><br>
+              <input class="mail_text my-1" placeholder="Email" asp-for="Email"><br>
+              <input class="mail_text my-1" placeholder="Phone Number" asp-for="PhoneNumber"><br>
+              <textarea class="massage-bt my-1" placeholder="Massage" rows="5" id="comment"
+                asp-for="Text"></textarea><br>
+              <button id="send_bt" type="submit">SEND</button>
+            </form>
+          </div>
+          <div class="col-md-6">
+            <div class="map_section">
+              <div class="map-responsive">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12512.521191514597!2d27.2099944!3d38.3691071!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b9618608d7c777%3A0x22aca51dc55ea9d1!2zRC5FLsOcIE3DvGhlbmRpc2xpayBGYWvDvGx0ZXNpIEJpbGdpc2F5YXIgTcO8aGVuZGlzbGnEn2kgQsO2bMO8bcO8!5e0!3m2!1str!2str!4v1703797763222!5m2!1str!2str"
+                  width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><br><br><br><br><br><br>
+    </div>
+  </div>
+  </div>
+  </div>
+</body>

@@ -25,7 +25,8 @@ namespace iDEA.Controllers
 
             int AccountID = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
 
-            var model = new CoursesModel {
+            var model = new CoursesModel
+            {
                 Courses = new List<Models.Course>()
             };
 
@@ -34,7 +35,8 @@ namespace iDEA.Controllers
             .Join(
                 _context.Courses, x => x.CourseID,
                 x => x.ID,
-                (takenCourse, course) => new {
+                (takenCourse, course) => new
+                {
                     CourseID = course.ID,
                     CourseName = course.Name,
                     Credit = course.Credit,
@@ -43,8 +45,9 @@ namespace iDEA.Controllers
                 }
             );
 
-            
-            foreach(var qcourse in query) {
+
+            foreach (var qcourse in query)
+            {
                 Models.Course course = new()
                 {
                     CourseID = qcourse.CourseID,
@@ -55,12 +58,13 @@ namespace iDEA.Controllers
                 };
                 model.Courses.Add(course);
             }
-            
+
 
             return View(model);
         }
 
-        public async Task<IActionResult> Info(int id) {
+        public async Task<IActionResult> Info(int id)
+        {
 
             if (!User.Identity.IsAuthenticated)
             {
@@ -80,15 +84,16 @@ namespace iDEA.Controllers
 
             var takenAssignment = _context.TakenAssignments
             .Where(x => x.PersonID == AccountID)
-            .Join(_context.Assignments, ta => ta.AssignmentID, a => a.AssignmentID, (a ,ta) => new {a, ta})
+            .Join(_context.Assignments, ta => ta.AssignmentID, a => a.AssignmentID, (a, ta) => new { a, ta })
             .Where(x => x.ta.CourseID == id);
 
             var takenExam = _context.TakenExams
             .Where(x => x.PersonID == AccountID)
-            .Join(_context.Exams, te => te.ExamID, e => e.ID, (e ,te) => new {e, te})
+            .Join(_context.Exams, te => te.ExamID, e => e.ID, (e, te) => new { e, te })
             .Where(x => x.te.CourseID == id);
 
-            CourseInfoModel model = new CourseInfoModel(){
+            CourseInfoModel model = new CourseInfoModel()
+            {
                 CourseID = id,
                 CourseName = query.Name,
                 Credit = query.Credit,
@@ -100,27 +105,32 @@ namespace iDEA.Controllers
                 Grade = takenCourse.Grade
             };
 
-            foreach(var assignment in takenAssignment) {
-                model.Assignments.Add(new Models.Assignment{
+            foreach (var assignment in takenAssignment)
+            {
+                model.Assignments.Add(new Models.Assignment
+                {
                     ID = assignment.a.AssignmentID,
                     Name = assignment.ta.Name,
                     Point = assignment.a.Point,
                     Deadline = assignment.ta.Deadline
                 });
             }
-            foreach(var exam in takenExam) {
-                model.Exams.Add(new Models.Exam{
+            foreach (var exam in takenExam)
+            {
+                model.Exams.Add(new Models.Exam
+                {
                     ID = exam.e.ExamID,
                     Time = exam.te.Time,
                     Info = exam.te.Info,
-                    Point = exam.e.Point 
+                    Point = exam.e.Point
                 });
             }
 
             return View(model);
         }
 
-        public async Task<IActionResult> Assignment(int id) {
+        public async Task<IActionResult> Assignment(int id)
+        {
 
             if (!User.Identity.IsAuthenticated)
             {
@@ -134,20 +144,24 @@ namespace iDEA.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            if (_context.TakenAssignments.FirstOrDefault(x => x.PersonID == AccountID && x.AssignmentID == id).Point != -1) {
+            if (_context.TakenAssignments.FirstOrDefault(x => x.PersonID == AccountID && x.AssignmentID == id).Point != -1)
+            {
                 return RedirectToAction("Index", "Home");
             }
 
             var query = _context.Questions.Where(x => x.AssignmentID == id);
 
-            QuestionAnswerModel model = new QuestionAnswerModel(){
+            QuestionAnswerModel model = new QuestionAnswerModel()
+            {
                 Questions = new List<Models.Question>(),
                 Answers = new List<string>(),
                 AssignmentID = id
             };
 
-            foreach(var question in query) {
-                model.Questions.Add(new Models.Question {
+            foreach (var question in query)
+            {
+                model.Questions.Add(new Models.Question
+                {
                     Text = question.Text,
                     Options = question.Options,
                 });
@@ -157,7 +171,8 @@ namespace iDEA.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Answer(int id, QuestionAnswerModel model) {
+        public async Task<IActionResult> Answer(int id, QuestionAnswerModel model)
+        {
 
             if (!User.Identity.IsAuthenticated)
             {
@@ -173,7 +188,8 @@ namespace iDEA.Controllers
 
             var assignment = _context.TakenAssignments.FirstOrDefault(x => x.PersonID == AccountID && x.AssignmentID == id);
 
-            if (assignment.Point != -1) {
+            if (assignment.Point != -1)
+            {
                 return RedirectToAction("Index", "Home");
             }
 
@@ -183,7 +199,8 @@ namespace iDEA.Controllers
             int correct = 0;
             for (int i = 0; i < questions.Count; i++)
             {
-                if (questions[i].CorrectAnswer == model.Answers[i]) {
+                if (questions[i].CorrectAnswer == model.Answers[i])
+                {
                     correct++;
                 }
             }
@@ -202,12 +219,22 @@ namespace iDEA.Controllers
                     .Where(joined => joined.e.CourseID == course.CourseID)
                     .Select(joined => joined.exam.Point)
                     .Union(_context.TakenAssignments
-                        .Join(_context.Assignments,ta => ta.AssignmentID, a => a.AssignmentID, (ta, a) => new {ta, a})
+                        .Join(_context.Assignments, ta => ta.AssignmentID, a => a.AssignmentID, (ta, a) => new { ta, a })
                         .Where(x => x.a.CourseID == course.CourseID && x.ta.PersonID == course.PersonID && x.ta.Point != -1)
                         .Select(x => x.ta.Point))
                     .Average();
 
             course.Point = averagePoint;
+
+            _context.SaveChanges();
+
+            var GPA = (float)_context.TakenCourses.Where(x => x.PersonID == AccountID).DefaultIfEmpty()
+                .Average(x => x.Point >= 90 ? 4.0 :
+                x.Point >= 80 ? 3.0 :
+                x.Point >= 70 ? 2.0 :
+                x.Point >= 60 ? 1.0 : 0.0);
+
+            _context.Students.FirstOrDefault(x => x.ID == AccountID).GPA = GPA;
 
             _context.SaveChanges();
 

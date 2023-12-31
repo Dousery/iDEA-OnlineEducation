@@ -1,149 +1,40 @@
-@model LecturerDataModel
+@model StudentsDataModel
 @{
-Layout = null;
+    Layout = "_LecturerLayout";
 }
-@using System.Security.Claims
-
-<!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="~/css/style.css">
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.19.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="/css/site.css" />
-</head>
-
-<body class="bg-secondary">
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand ps-4" href="/Lecturer/Index">
-                <img src="/img/ideaLogo2.png" alt="Logo" width="40" height="40">
-            </a>
-            <a class="navbar-brand" style="color:rgb(43,205,208)" href="/Lecturer/Index">iDEA</a>
-            <button class="navbar-toggler style=" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item ps-4">
-                        <a class="nav-link navbar active" style="color: lightgoldenrodyellow;" aria-current="page"
-                            href="/Lecturer/StudentManager">Öğrenci Yönetim</a>
-                    </li>
-                    <li class="nav-item ps-4">
-                        <a class="nav-link navbar active" style="color: lightgoldenrodyellow;" aria-current="page"
-                            href="/Lecturer/AssignmentManager">Ödev Yönetim</a>
-                    </li>
-                    <li class="nav-item ps-4">
-                        <a class="nav-link active " style="color: lightgoldenrodyellow;" aria-current="page"
-                            href="Lecturer/ExamManager">Sınav Yönetim</a>
-                    </li>
-                </ul>
-            </div>
-            <a href=""
-                class="nav-item text-light text-decoration-none d-none d-lg-block pe-3">@(User.FindFirstValue(ClaimTypes.GivenName))</a>
-            <ul class="navbar-nav d-none d-lg-block ms-auto mb-2 mb-lg-0 profile-menu">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <div class="profile-pic">
-                            <img src="https://source.unsplash.com/250x250?person" alt="Profile Picture">
-                        </div>
-                        <!-- You can also use icon as follows: -->
-                        <!--  <i class="fas fa-user"></i> -->
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/Lecturer/Index"><i class="fas fa-sliders-h fa-fw"></i>
-                                Account</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="fas fa-cog fa-fw"></i> Settings</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="/Lecturer/Logout"><i class="fas fa-sign-out-alt fa-fw"></i>
-                                Log Out</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <h1 style="text-align: center; margin-top: 20px; color:rgb(255, 255, 255); font-weight: bold; ">Öğrenci Listesi</h1>
-    <table class="table align-middle mt-5 table-sm mb-0 bg-white;">
-        <thead class="bg-light">
-            <tr>
-                <th>Name</th>
-                <th>Department</th>
-                <th>Position</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody style="cursor: pointer;">
+<h1 style="text-align: center; margin-top: 20px; color:rgb(255, 255, 255); font-weight: bold; ">Öğrenci Listesi</h1>
+<table class="table align-middle mt-5 table-sm mb-0 bg-white;">
+    <thead class="bg-light">
+        <tr>
+            <th>Name</th>
+            <th>Department</th>
+            <th>GPA</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody style="cursor: pointer;">
+        @foreach (var student in Model.Students) {
             <tr style="background-color: #fff;" onmouseover="this.style.backgroundColor='#f5f5f5';"
-                onmouseout="this.style.backgroundColor='#fff';">
-                <td>
-                    <div class="d-flex align-items-center">
-                        <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt=""
-                            style="width: 45px; height: 45px" class="rounded-circle" />
-                        <div class="ms-3">
-                            <p class="fw-bold mb-1">John Doe</p>
-                            <p class="text-muted mb-0">ID = </p>
-                        </div>
+            onmouseout="this.style.backgroundColor='#fff';">
+            <td>
+                <div class="d-flex align-items-center">
+                    <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px"
+                        class="rounded-circle" />
+                    <div class="ms-3">
+                        <p class="fw-bold mb-1">@student.Name</p>
+                        <p class="text-muted mb-0">ID = @student.ID</p>
                     </div>
-                </td>
-                <td>
-                    <p class="fw-normal mb-1">Software engineer</p>
-                </td>
-                <td>Senior</td>
-                <td>
-                    <button type="button" class="btn btn-link btn-rounded btn-sm fw-bold"
-                        data-mdb-ripple-color="dark">Delete</button>
-                </td>
-            </tr>
+                </div>
+            </td>
+            <td>
+                <p class="fw-normal mb-1">@student.Department</p>
+            </td>
+            <td>
+                <p class="fw-normal mb-1">@student.GPA</p>
+            </td>
+            <td>Senior</td>
+        </tr>
+        }
 
-            <tr style="background-color: #fff;" onmouseover="this.style.backgroundColor='#f5f5f5';"
-                onmouseout="this.style.backgroundColor='#fff';">
-                <td>
-                    <div class="d-flex align-items-center">
-                        <img src="https://mdbootstrap.com/img/new/avatars/10.jpg" alt=""
-                            style="width: 45px; height: 45px" class="rounded-circle" />
-                        <div class="ms-3">
-                            <p class="fw-bold mb-1">Smith Jhonson</p>
-                            <p class="text-muted mb-0">ID = </p>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <p class="fw-normal mb-1">Mechanical engineer</p>
-                </td>
-                <td>Senior</td>
-                <td>
-                    <button type="button" class="btn btn-link btn-rounded btn-sm fw-bold"
-                        data-mdb-ripple-color="dark">Delete</button>
-                </td>
-            </tr>
-
-        </tbody>
-    </table>
-
-
-
-    <div class="navbar navbar-expand-sm bg-light fixed-bottom bg-dark"style="height: 60px;">
-        <div class="container d-" flex align-items-center">
-            <ul class="nav justify-content-center">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary text-white">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary text-white">About</a></li>
-            </ul>
-            <p class="text-center text-body-secondary mt-3">© 2023 placeholder company name, Inc</p>
-        </div>
-    </div>
-
-
-    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-</body>
-
-</html>
+    </tbody>
+</table>

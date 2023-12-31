@@ -1,0 +1,40 @@
+@model IList<StudentExamDataModel>
+@{
+    Layout = "_LecturerLayout";
+}
+<h1 style="text-align: center; margin-top: 20px; color:rgb(255, 255, 255); font-weight: bold; ">Sınav alanlar listesi</h1>
+<table class="table align-middle mt-5 table-sm mb-0 bg-white;">
+    <thead class="bg-light">
+        <tr>
+            <th>Student</th>
+            <th>Exam</th>
+            <th>Point</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody style="cursor: pointer;">
+        @foreach (var exam in Model) {
+            <tr style="background-color: #fff;" onmouseover="this.style.backgroundColor='#f5f5f5';"
+            onmouseout="this.style.backgroundColor='#fff';">
+            <td>
+                <div class="d-flex align-items-center">
+                    <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px"
+                        class="rounded-circle" />
+                    <div class="ms-3">
+                        <p class="fw-bold mb-1">@exam.StudentName</p>
+                        <p class="text-muted mb-0">ID = @exam.StudentID</p>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <p class="fw-normal mb-1">@exam.ExamName</p>
+            </td>
+            <td>
+                <p class="fw-normal mb-1">@exam.Point</p>
+            </td>
+            <td>Senior</td>
+        </tr>
+        }
+
+    </tbody>
+</table>

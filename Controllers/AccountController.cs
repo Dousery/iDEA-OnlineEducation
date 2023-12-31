@@ -48,7 +48,7 @@ namespace iDEA.Controllers
                 new(ClaimTypes.GivenName, isUser.Name + " " + isUser.Surname ?? "")
             };
 
-            if (_context.Lecturers.FirstOrDefault(x => x.ID == isUser.ID) is null)
+            if (_context.Lecturers.FirstOrDefault(x => x.ID == isUser.ID) is not null)
             {
                 userClaims.Add(new Claim(ClaimTypes.Role, "admin"));
             }
@@ -83,6 +83,10 @@ namespace iDEA.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
+            if (User.FindFirstValue(ClaimTypes.Role) == "admin") {
+                return RedirectToAction("Index", "Lecturer");
+            }
+
             int AccountID = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
 
             var model = new StudentDataModel
@@ -102,11 +106,7 @@ namespace iDEA.Controllers
                 .Select(combined => combined.Department)
                 .FirstOrDefault(),
 
-                GPA = (float)_context.TakenCourses.Where(x => x.PersonID == AccountID).DefaultIfEmpty()
-                .Average(x => x.Point >= 90 ? 4.0 :
-                x.Point >= 80 ? 3.0 :
-                x.Point >= 70 ? 2.0 :
-                x.Point >= 60 ? 1.0 : 0.0),
+                GPA = _context.Students.FirstOrDefault(x => x.ID == AccountID).GPA,
 
                 Credit = (int)_context.TakenCourses.Where(x => x.PersonID == AccountID)
                 .Join(_context.Courses,
@@ -159,6 +159,10 @@ namespace iDEA.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
+            if (User.FindFirstValue(ClaimTypes.Role) == "admin") {
+                return RedirectToAction("Index", "Lecturer");
+            }
+
             int AccountID = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
 
             IList<Models.Assignment> assignments = new List<Models.Assignment>();
@@ -187,6 +191,10 @@ namespace iDEA.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
+            if (User.FindFirstValue(ClaimTypes.Role) == "admin") {
+                return RedirectToAction("Index", "Lecturer");
+            }
+
             int AccountID = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
 
             IList<Models.Exam> exams = new List<Models.Exam>();
@@ -206,6 +214,29 @@ namespace iDEA.Controllers
             }
 
             return View(exams);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Contact() {
+
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            if (User.FindFirstValue(ClaimTypes.Role) == "admin") {
+                return RedirectToAction("Index", "Lecturer");
+            }
+
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Contact(FeedbackModel model) {
+            _context.Feedbacks.Add(new Feedback{Comment = model.Name + "\n" + model.Email + "\n" + model.PhoneNumber + "\n" + model.Text});
+
+            _context.SaveChanges();
+            
+            return RedirectToAction("Index","Account");
         }
     }
 }

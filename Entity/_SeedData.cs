@@ -807,12 +807,26 @@ namespace iDEA.Entity
                     .Where(joined => joined.e.CourseID == course.CourseID)
                     .Select(joined => joined.exam.Point)
                     .Union(context.TakenAssignments
-                        .Join(context.Assignments,ta => ta.AssignmentID, a => a.AssignmentID, (ta, a) => new {ta, a})
+                        .Join(context.Assignments, ta => ta.AssignmentID, a => a.AssignmentID, (ta, a) => new { ta, a })
                         .Where(x => x.a.CourseID == course.CourseID && x.ta.PersonID == course.PersonID && x.ta.Point != -1)
                         .Select(x => x.ta.Point)).DefaultIfEmpty()
                     .Average();
 
                 course.Point = averagePoint;
+            }
+            context.SaveChanges();
+            
+            var students = context.Students.ToList();
+
+            foreach (var student in students)
+            {
+                var GPA = (float)context.TakenCourses.Where(x => x.PersonID == student.ID).DefaultIfEmpty()
+                .Average(x => x.Point >= 90 ? 4.0 :
+                x.Point >= 80 ? 3.0 :
+                x.Point >= 70 ? 2.0 :
+                x.Point >= 60 ? 1.0 : 0.0);
+
+                student.GPA = GPA;
             }
 
             context.SaveChanges();
