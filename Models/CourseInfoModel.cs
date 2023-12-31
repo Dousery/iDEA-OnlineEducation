@@ -15,7 +15,7 @@ namespace iDEA.Models {
         public float Point { get; set; }
     }
     public class Session {
-        
+        public int SessionID { get; set; }
     }
     public class CourseInfoModel{
         public String? CourseName { get; set; }

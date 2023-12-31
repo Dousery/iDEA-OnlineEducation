@@ -23,6 +23,10 @@ namespace iDEA.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
+            if (User.FindFirstValue(ClaimTypes.Role) == "admin") {
+                return RedirectToAction("Index", "Lecturer");
+            }
+
             int AccountID = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
 
             var model = new CoursesModel
@@ -71,6 +75,10 @@ namespace iDEA.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
+            if (User.FindFirstValue(ClaimTypes.Role) == "admin") {
+                return RedirectToAction("Index", "Lecturer");
+            }
+
             int AccountID = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
 
             if (!_context.TakenCourses.Any(x => x.PersonID == AccountID && x.CourseID == id))
@@ -91,6 +99,8 @@ namespace iDEA.Controllers
             .Where(x => x.PersonID == AccountID)
             .Join(_context.Exams, te => te.ExamID, e => e.ID, (e, te) => new { e, te })
             .Where(x => x.te.CourseID == id);
+
+            var sessions = _context.Sessions.Where(x => x.CourseID == id);
 
             CourseInfoModel model = new CourseInfoModel()
             {
@@ -125,6 +135,13 @@ namespace iDEA.Controllers
                     Point = exam.e.Point
                 });
             }
+            foreach (var session in sessions)
+            {
+                model.Sessions.Add(new Models.Session
+                {
+                    SessionID = session.ID,
+                });
+            }
 
             return View(model);
         }
@@ -135,6 +152,10 @@ namespace iDEA.Controllers
             if (!User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Home");
+            }
+
+            if (User.FindFirstValue(ClaimTypes.Role) == "admin") {
+                return RedirectToAction("Index", "Lecturer");
             }
 
             int AccountID = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
@@ -177,6 +198,10 @@ namespace iDEA.Controllers
             if (!User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Home");
+            }
+
+            if (User.FindFirstValue(ClaimTypes.Role) == "admin") {
+                return RedirectToAction("Index", "Lecturer");
             }
 
             int AccountID = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
@@ -241,6 +266,37 @@ namespace iDEA.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+
+        public async Task<IActionResult> Session(int id)
+        {
+
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            if (User.FindFirstValue(ClaimTypes.Role) == "admin") {
+                return RedirectToAction("Index", "Lecturer");
+            }
+
+            int AccountID = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+
+            if (!_context.TakenCourses.Where(x => x.PersonID == AccountID)
+            .Join(_context.Sessions, tc => tc.CourseID, s => s.CourseID, (tc, s) => new {tc, s})
+            .Any(x => x.s.CourseID == id)) {
+                return RedirectToAction("Index", "Account");
+            }
+
+            if (!_context.Attendances.Any(x => x.StudentID == AccountID && x.SessionID == id)) {
+                _context.Attendances.Add(new Attendance{
+                    StudentID = AccountID,
+                    SessionID = id 
+                });
+                _context.SaveChanges();
+            }
+
+            return View();
+        }
     }
 
 }

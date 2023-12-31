@@ -797,6 +797,25 @@ namespace iDEA.Entity
                 });
             }
 
+            if (!context.Sessions.Any()) {
+                context.Sessions.Add(new Session{
+                    ID = 1,
+                    CourseID = 1
+                });
+                context.Sessions.Add(new Session{
+                    ID = 2,
+                    CourseID = 1
+                });
+                context.Sessions.Add(new Session{
+                    ID = 3,
+                    CourseID = 1
+                });
+                context.Sessions.Add(new Session{
+                    ID = 4,
+                    CourseID = 1
+                });
+            }
+
             var coursesToUpdate = context.TakenCourses.ToList();
 
             foreach (var course in coursesToUpdate)

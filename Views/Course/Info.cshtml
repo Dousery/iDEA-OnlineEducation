@@ -72,6 +72,23 @@
             </table>
             
             <p class="h3 border ms-5 py-1 px-2 mb-3 border-dark text-dark rounded">Sessions</p>
+            <table class="table ms-3 table-hover border border-dark table-primary rounded">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">SessionID</th>
+                        <th scope="col">Watch</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var session in Model.Sessions)
+                    {
+                        <tr>
+                            <th>@session.SessionID</th>
+                            <th><a href="/Course/Session/@session.SessionID" class="btn btn-primary">Watch</a></th>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
     </div>
 
