@@ -1,0 +1,60 @@
+@{
+    Layout = "_LecturerLayout";
+}
+
+@model AddStudentModel
+
+<form method="post" action="/Lecturer/StudentManager">
+    <section class="vh-100 bg-image"
+  style>
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5" style="color: rgb(14, 147, 224); font-weight: bold;">Create a Student</h2>
+
+              <form>
+
+                <div class="form-outline mb-4">
+                  <label class="form-label" asp-for="Name" style="color: black; font-weight: bold;">Name</label>
+                  <input type="text" asp-for="Name" class="form-control form-control-lg" />
+                </div>
+
+                <div class="form-outline mb-4">
+                    <label class="form-label" asp-for="Surname" style="color: black; font-weight: bold;">Surname</label>
+                    <input type="text" asp-for="Surname" class="form-control form-control-lg" />
+                  </div>
+
+                <div class="form-outline mb-4">                 
+                  <label class="form-label" asp-for="Email" style="color: black; font-weight: bold;">Email</label>
+                  <input type="email" asp-for="Email" class="form-control form-control-lg" />
+                </div>
+
+                <div class="form-outline mb-4">
+                    <label class="form-label" asp-for="Password" style="color: black; font-weight: bold;" >Password</label>
+                    <input type="password" asp-for="Password" class="form-control form-control-lg" />
+                  </div>
+        
+                <div class="form-outline mb-4">
+                  <label class="form-label" asp-for="ConfirmPassword" style="color: black; font-weight: bold;" >Repeat your password</label>
+                  <input type="password" asp-for="ConfirmPassword" class="form-control form-control-lg" />
+                </div>
+
+                <div class="d-flex justify-content-center">
+                  <button type="button"
+                    class="btn btn-primary btn-block btn-lg gradient-custom-4 text-light">Register</button>
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</form>
+

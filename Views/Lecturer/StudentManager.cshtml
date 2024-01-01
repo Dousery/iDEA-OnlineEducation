@@ -1,40 +1,47 @@
-@model StudentsDataModel
 @{
     Layout = "_LecturerLayout";
 }
-<h1 style="text-align: center; margin-top: 20px; color:rgb(255, 255, 255); font-weight: bold; ">Öğrenci Listesi</h1>
-<table class="table align-middle mt-5 table-sm mb-0 bg-white;">
-    <thead class="bg-light">
-        <tr>
-            <th>Name</th>
-            <th>Department</th>
-            <th>GPA</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody style="cursor: pointer;">
-        @foreach (var student in Model.Students) {
-            <tr style="background-color: #fff;" onmouseover="this.style.backgroundColor='#f5f5f5';"
-            onmouseout="this.style.backgroundColor='#fff';">
-            <td>
-                <div class="d-flex align-items-center">
-                    <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px"
-                        class="rounded-circle" />
-                    <div class="ms-3">
-                        <p class="fw-bold mb-1">@student.Name</p>
-                        <p class="text-muted mb-0">ID = @student.ID</p>
-                    </div>
-                </div>
-            </td>
-            <td>
-                <p class="fw-normal mb-1">@student.Department</p>
-            </td>
-            <td>
-                <p class="fw-normal mb-1">@student.GPA</p>
-            </td>
-            <td>Senior</td>
-        </tr>
-        }
-
-    </tbody>
-</table>
+<div class="container">
+    <h1 style="text-align: center; margin-top: 20px; color:rgb(255, 255, 255); font-weight: bold;">Öğrenci Listesi</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="d-flex justify-content-end mb-3">
+                <a class="btn btn-primary me-2" asp-action="AddStudent" style="font-size: 18px;">Create Student</a>
+            </div>
+            <table class="table align-middle mt-2 table-sm mb-0 bg-white" style="width: 100%;">
+                <thead class="bg-light">
+                    <tr>
+                        <th style="width: 33.33%;">Name</th>
+                        <th style="width: 33.33%;">Department</th>
+                        <th style="width: 33.33%;">GPA</th>
+                        <th style="width: 0%;"></th> <!-- Set the last column to 0% width to eliminate the unused space -->
+                    </tr>
+                </thead>
+                <tbody style="cursor: pointer;">
+                    @foreach (var student in Model.Students) {
+                        <tr style="background-color: #fff;" onmouseover="this.style.backgroundColor='#f5f5f5';"
+                            onmouseout="this.style.backgroundColor='#fff';">
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt=""
+                                        style="width: 45px; height: 45px" class="rounded-circle" />
+                                    <div class="ms-3">
+                                        <p class="fw-bold mb-1">@student.Name</p>
+                                        <p class="text-muted mb-0">ID = @student.ID</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">@student.Department</p>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">@student.GPA</p>
+                            </td>
+                            <td></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -128,6 +128,19 @@ namespace iDEA.Controllers
             return View(model);
         }
 
+        public IActionResult AddStudent(){
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddStudent(AddStudentModel model){
+            if(ModelState.IsValid){
+                
+            }
+
+            return View(model);
+        }
+
     }
 
 }
