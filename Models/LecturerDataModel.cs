@@ -4,5 +4,7 @@ namespace iDEA.Models {
         public string? Name { get; set; }
         public string? Surname { get; set; }
         public string? Department { get; set; }
+
+        public IList<Course>? Courses { get; set; }
     }
 }
