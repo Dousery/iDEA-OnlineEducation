@@ -1,18 +1,22 @@
 @model List<Assignment>
-<p class="h3 border ms-5 py-1 px-2 mb-3 border-dark text-dark rounded">Assignments</p>
-<table class="table ms-3 table-hover border border-dark table-primary rounded">
-    <thead class="table-dark">
-        <tr>
-            <th scope="col">Course</th>
-            <th scope="col">Name</th>
-            <th scope="col">Deadline</th>
-            <th scope="col">Point</th>
-            <th scope="col">Info</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var assignment in Model)
-        {
+
+    <div class="container">
+
+        <p class="h3 border-2 py-1 px-2 mb-3 mt-5 border-dark text-light rounded " style="background-color: rgb(33, 37, 41)">Assignments</p>
+    <table style="align-items: center;width: 100%;"
+        class="table  ms-0 table-hover border border-dark table-primary rounded">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Course</th>
+                <th scope="col">Name</th>
+                <th scope="col">Deadline</th>
+                <th scope="col">Point</th>
+                <th scope="col">Info</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var assignment in Model)
+            {
             <tr>
                 <th>@assignment.Course</th>
                 <th>@assignment.Name</th>
@@ -20,6 +24,9 @@
                 <th>@assignment.Point</th>
                 <th><a href="/Course/Assignment/@assignment.ID" class="btn btn-primary">View</a></th>
             </tr>
-        }
-    </tbody>
-</table>
+            }
+        </tbody>
+    </table>
+
+    </div>
+ 

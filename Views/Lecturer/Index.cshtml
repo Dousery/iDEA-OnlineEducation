@@ -3,7 +3,7 @@
     Layout = "_LecturerLayout";
 }
 @using System.Security.Claims
-<div class="container mt-3">
+<div class="container mt-5">
   <div class="row flex-md-row">
     <div class="col-md-4">
       <div class="card bg-dark">
@@ -23,7 +23,7 @@
     <div class="col-md-8">
       @foreach (Course course in Model.Courses)
         {
-            <div class="card bg-dark">
+            <div class="card bg-dark mb-5">
                 <div class="card-body">
                     <h3 class="card-title text-white">@(course.CourseName)</h3>
                     <p class="card-text text-white">Course ID : @course.CourseID</p>

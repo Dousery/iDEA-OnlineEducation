@@ -189,10 +189,6 @@ namespace iDEA.Controllers
                 return View(model);
             }
 
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
 
             _context.People.Add(new Person
             {

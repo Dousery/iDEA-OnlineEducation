@@ -1,8 +1,23 @@
 @model StudentDataModel
 @using System.Security.Claims
+
+<style>
+  .table {
+    border-width: 2px; /* ya da istediğiniz genişliği belirtin */
+    border-style: solid;
+    border-color: dark;
+  }
+
+  .h3 {
+    border-width: 2px; /* ya da istediğiniz genişliği belirtin */
+    border-style: solid;
+    border-color: dark;
+  }
+</style>
+
 <div class="container mt-3">
   <div class="row flex-md-row">
-    <div class="col-md-4">
+    <div class="col-md-4 mt-3">
       <div class="card bg-dark">
         <div class="d-flex justify-content-center">
           <img src="https://source.unsplash.com/250x250?person" class="rounded mt-4" height="175px" width="175px">
@@ -27,8 +42,10 @@
     </div>
     <div class="col-md-8">
       <div class="container">
-        <p class="h3 border ms-5 py-1 px-2 mb-3 border-dark text-dark rounded">Exams</p>
-        <table class="table ms-3 table-hover border border-dark table-primary rounded">
+        <div class="ms-5">
+          <p class="h3 border-2 py-1 px-2 mb-3 mt-3 border-dark text-light rounded " style="background-color: rgb(33, 37, 41)">Exams</p>
+          <div class="table-responsive">
+            <table class="table table-hover border border-dark table-primary rounded">
           <thead class="table-dark">
             <tr>
               <th scope="col">Course</th>
@@ -49,8 +66,10 @@
             }
           </tbody>
         </table>
-        <p class="h3 border ms-5 py-1 px-2 mb-3 border-dark text-dark rounded">Assignments</p>
-        <table class="table ms-3 table-hover border border-dark table-primary rounded">
+        <div class="ms-0">
+          <p class="h3 border-2 py-1 px-2 mb-3 mt-5 border-dark text-light rounded" style="background-color: rgb(33, 37, 41)">Assignments</p>
+          <div class="table-responsive">
+            <table class="table table-hover border border-dark table-primary rounded">
           <thead class="table-dark">
             <tr>
               <th scope="col">Course</th>
